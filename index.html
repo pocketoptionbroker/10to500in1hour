@@ -35,7 +35,7 @@
         }
 
         .glass-effect {
-            background: rgba(30, 41, 59, 0.9);
+            background: rgba(30, 41, 59, 0.95);
             backdrop-filter: blur(12px);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -71,14 +71,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
-            border-radius: 0.75rem;
+            padding: 1.25rem;
+            border-radius: 1rem;
             margin-bottom: 2.5rem;
             border: 1px solid rgba(96, 165, 250, 0.3);
             text-decoration: none;
         }
         .reg-banner:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
         }
 
@@ -88,135 +88,126 @@
             -webkit-text-fill-color: transparent;
             font-weight: 800;
         }
+
+        .playing-waves {
+            display: none;
+            align-items: center;
+            gap: 2px;
+        }
+        .active .playing-waves { display: flex; }
+        .wave-bar {
+            width: 3px;
+            height: 15px;
+            background: #10b981;
+            animation: wave 1s ease-in-out infinite;
+        }
+        @keyframes wave {
+            0%, 100% { height: 5px; }
+            50% { height: 20px; }
+        }
     </style>
 </head>
-<body class="pb-32 text-center">
+<body class="pb-40 text-center">
 
     <!-- Header -->
-    <header class="bg-slate-900 py-10 px-6 text-center border-b border-slate-800">
-        <h1 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-2 text-center">
+    <header class="bg-slate-900 py-12 px-6 text-center border-b border-slate-800">
+        <h1 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-2">
             Pocket Option High-Frequency Strategy
         </h1>
-        <p class="text-slate-400 text-lg mb-4 text-center">Mastering the Mean Reversion (RSI & Stochastic)</p>
-        <div class="inline-block px-4 py-2 bg-slate-800 rounded-full border border-slate-700 shadow-lg">
-            <span class="highlight-cta text-xl md:text-2xl text-center block">
+        <p class="text-slate-400 text-lg mb-6">Optimized for 2026 Trading Environments</p>
+        <div class="inline-block px-6 py-3 bg-slate-800 rounded-full border border-slate-700 shadow-2xl">
+            <span class="highlight-cta text-xl md:text-2xl block italic">
                 Turn your $10 into $500 in less than three hours with this strategy
             </span>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-8">
+    <main class="max-w-4xl mx-auto px-6 py-10">
         
         <!-- FIRST REGISTRATION LINK -->
-        <a href="https://bit.ly/poregister" target="_blank" class="reg-banner">
-            <div class="flex items-center gap-3 justify-center">
-                <i class="fas fa-rocket text-yellow-400 text-xl"></i>
-                <span class="font-bold text-white">Get Started: Register your account here</span>
+        <a href="https://bit.ly/poregister" target="_blank" class="reg-banner group">
+            <div class="flex items-center gap-4 justify-center">
+                <i class="fas fa-rocket text-yellow-400 text-2xl group-hover:animate-bounce"></i>
+                <span class="font-bold text-white text-xl">Register Now: Start Trading Today</span>
             </div>
         </a>
 
         <!-- PART 1: OVERVIEW & IMAGE 01 -->
         <section class="image-container">
-            <img src="image01.jpg" alt="Strategy Overview" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+01+-+Strategy+Setup'">
+            <img src="image01.jpg" alt="Strategy Overview" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+01+-+Indicators+Setup'">
         </section>
 
-        <div id="para-group-1" class="text-left">
-            <div class="paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50" onclick="playParagraph(0)" id="para-0">
-                <p class="leading-relaxed text-slate-200 text-lg">what we are analyzing today is a high-precision mean reversion strategy designed specifically for binary options. This approach, often utilized by top traders, operates on the fundamental economic principle of market elasticity. The core concept here is that price action behaves like a rubber band; when it is stretched too far in a short period, it inevitably snaps back. We are not looking to predict the trend for the next hour; we are looking to capitalize on the immediate, inevitable reaction to price exhaustion.</p>
-            </div>
-            <div class="paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50" onclick="playParagraph(1)" id="para-1">
-                <p class="leading-relaxed text-slate-200 text-lg">Let’s begin with the technical architecture of our chart, as displayed in the first visual. To execute this strategy effectively, we must operate in a high-frequency environment. We set our chart timeframe to 30-second candlesticks. This specific timeframe is crucial because it allows us to see the granular volatility that longer timeframes hide. Paired with this, our trade expiration time is set strictly to one minute. This 2:1 ratio between expiration and candle time gives the market exactly enough time to produce the 'pullback' reaction we are targeting.</p>
-            </div>
-            <div class="paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50" onclick="playParagraph(2)" id="para-2">
-                <p class="leading-relaxed text-slate-200 text-lg">Now, looking at our indicators, we strip away the noise and focus on momentum oscillators. The primary driver of this strategy is the Relative Strength Index, or RSI. We have configured the RSI with key levels at 70 and 30. The 70 level represents the ceiling—the zone of 'Overbought' conditions where buyer exhaustion occurs. Conversely, the 30 level represents the floor—the 'Oversold' zone where sellers are losing momentum. This indicator serves as our primary signal for entry.</p>
-            </div>
+        <div id="section-1" class="text-left">
+            <!-- Paras 0, 1, 2 -->
         </div>
 
         <!-- MIDDLE REGISTRATION LINK -->
-        <div class="bg-slate-800/80 p-6 rounded-2xl border border-blue-500/20 text-center my-12">
-            <h3 class="text-lg font-semibold text-blue-300 mb-4">Ready to test this on a Live/Demo account?</h3>
-            <a href="https://bit.ly/poregister" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-lg transition-colors">
-                Register & Trade Now
+        <div class="bg-slate-800/80 p-8 rounded-3xl border border-blue-500/20 text-center my-14 shadow-2xl">
+            <h3 class="text-xl font-bold text-blue-300 mb-6">Apply this logic to your trading account instantly</h3>
+            <a href="https://bit.ly/poregister" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105">
+                Open Your Account <i class="fas fa-external-link-alt ml-2"></i>
             </a>
         </div>
 
-        <!-- PART 2: EXECUTION & IMAGE 03 (MIDDLE IMAGE) -->
+        <!-- PART 2: EXECUTION & IMAGE 03 -->
         <section class="image-container">
-            <img src="image03.jpg" alt="Execution Rules" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+03+-+Execution+Rules'">
+            <img src="image03.jpg" alt="Execution Rules" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+03+-+Entry+Logic'">
         </section>
 
-        <div id="para-group-2" class="text-left">
-            <div class="paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50" onclick="playParagraph(3)" id="para-3">
-                <p class="leading-relaxed text-slate-200 text-lg">To filter out false signals, we incorporate a secondary confirmation tool: the Stochastic Oscillator. While the RSI tracks the speed of price change, the Stochastic helps us identify the momentum relative to the high-low range. We utilize the levels of 80 and 20 for this oscillator. When both the RSI and the Stochastic align in these extreme zones, the probability of a reversal increases exponentially, providing us with a high-confidence setup.</p>
-            </div>
-            <div class="paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50" onclick="playParagraph(4)" id="para-4">
-                <p class="leading-relaxed text-slate-200 text-lg">Let’s discuss the psychology behind the 'Call' or Buy setup. As you can see in the bullish scenario on the infographic, we patiently wait for the market to dive. We are looking for the moment the RSI line hits or breaks below the 30 level. At this precise moment, the asset is mathematically oversold. The selling pressure is unsustainable in the short term, and the market must breathe. This is our trigger to enter a Call trade for one minute, anticipating that immediate upward correction.</p>
-            </div>
-            <div class="paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50" onclick="playParagraph(5)" id="para-5">
-                <p class="leading-relaxed text-slate-200 text-lg">Conversely, for the 'Put' or Sell setup, we look for irrational exuberance in the price. When the candles surge upward and the RSI line hits or pierces the 70 level, we know the asset is overbought. The 'rubber band' is stretched to its limit. At this peak, the buyers are exhausted, and a drop is imminent. We do not wait for a long trend reversal; we strike immediately with a Put trade for one minute to capture the initial drop.</p>
-            </div>
+        <div id="section-2" class="text-left">
+            <!-- Paras 3, 4, 5 -->
         </div>
 
-        <!-- PART 3: TECHNICALS & IMAGE 02 (LAST IMAGE) -->
-        <section class="image-container mt-12">
+        <!-- PART 3: TECHNICALS & IMAGE 02 -->
+        <section class="image-container mt-14">
             <img src="image02.jpg" alt="Technical Setup" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+02+-+Technical+Setup'">
         </section>
 
-        <div id="para-group-3" class="text-left">
-            <div class="paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50" onclick="playParagraph(6)" id="para-6">
-                <p class="leading-relaxed text-slate-200 text-lg">It is important to understand that this strategy is purely reactive, not predictive. We are not guessing where the price will go; we are reacting to where the price is. The beauty of this approach lies in its discipline. If the RSI does not touch the 30 or 70 lines, we do not trade. We remain on the sidelines like a sniper waiting for the perfect alignment. This patience is what separates profitable traders from gamblers.</p>
-            </div>
-            <div class="paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50" onclick="playParagraph(7)" id="para-7">
-                <p class="leading-relaxed text-slate-200 text-lg">Furthermore, risk management in this strategy is built into the time expiration. By using a fixed one-minute expiration on 30-second candles, we avoid the trap of holding positions during long-term consolidations. We enter during high volatility, capture the reaction, and exit. This rapid turnover allows for multiple opportunities within a single trading session, compounding small wins into significant daily targets.</p>
-            </div>
-            <div class="paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50" onclick="playParagraph(8)" id="para-8">
-                <p class="leading-relaxed text-slate-200 text-lg">In summary, the efficiency of this strategy for 2026 and beyond lies in its simplicity and reliance on unchangeable market mechanics. Markets will always overreact to news and volume spikes, and they will always correct back to the mean. By mastering the RSI 70/30 and Stochastic 80/20 levels on a 30-second timeframe, you are equipping yourself with a mathematical edge over the house.</p>
-            </div>
-            <div class="paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50" onclick="playParagraph(9)" id="para-9">
-                <p class="leading-relaxed text-slate-200 text-lg">To implement this strategy effectively, you need a broker that offers precise execution and the specific indicators we discussed. For those ready to start applying this method, you can register for a reliable trading account using the official link displayed here: https://bit.ly/poregister</p>
-            </div>
+        <div id="section-3" class="text-left">
+            <!-- Paras 6, 7, 8, 9 -->
         </div>
 
         <!-- FINAL REGISTRATION LINK -->
-        <div class="mt-16 text-center p-10 bg-gradient-to-br from-blue-900/40 to-slate-900 border border-blue-500/30 rounded-2xl">
-            <h2 class="text-2xl font-bold mb-4 text-center">Start Your Trading Journey</h2>
-            <p class="text-slate-300 mb-8 text-center">Join thousands of successful traders using our high-frequency approach.</p>
-            <a href="https://bit.ly/poregister" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-12 rounded-full transition-transform transform hover:scale-105 shadow-xl shadow-blue-500/20">
-                REGISTER FOR LIFETIME ACCESS <i class="fas fa-external-link-alt ml-2"></i>
+        <div class="mt-20 text-center p-12 bg-gradient-to-br from-blue-900/60 to-slate-900 border border-blue-500/40 rounded-3xl shadow-2xl">
+            <h2 class="text-3xl font-bold mb-6">Join the Elite 5%</h2>
+            <p class="text-slate-300 mb-10 text-lg">Mastering this strategy is your first step toward financial freedom.</p>
+            <a href="https://bit.ly/poregister" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-black py-5 px-16 rounded-full transition-all transform hover:scale-110 shadow-2xl shadow-blue-500/40 uppercase tracking-widest">
+                Register & Trade: https://bit.ly/poregister
             </a>
-            <p class="mt-6 text-sm text-slate-500 italic text-center">https://bit.ly/poregister</p>
         </div>
     </main>
 
     <!-- Audio Player Controller -->
-    <footer class="fixed bottom-0 left-0 w-full glass-effect z-50 px-6 py-4">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center gap-4">
-                <div class="flex items-center gap-4">
-                    <button id="btn-play-pause" class="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-white shadow-lg transition-all active:scale-95 disabled:opacity-50">
-                        <i id="play-icon" class="fas fa-play text-xl"></i>
-                    </button>
+    <footer class="fixed bottom-0 left-0 w-full glass-effect z-50 px-6 py-6 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
+            
+            <div class="flex items-center gap-5">
+                <button id="btn-play-pause" class="w-16 h-16 rounded-full bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-white shadow-2xl transition-all active:scale-90">
+                    <i id="play-icon" class="fas fa-play text-2xl"></i>
+                </button>
+                <div class="flex flex-col items-start">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Narration Speed</span>
                     <div class="flex items-center gap-2">
-                        <button id="speed-10" class="speed-btn px-3 py-1 rounded-md bg-blue-900/50 text-xs font-bold text-blue-400 border border-blue-400/30">1x</button>
-                        <button id="speed-15" class="speed-btn px-3 py-1 rounded-md bg-slate-700 hover:bg-slate-600 text-xs font-bold transition-colors">1.5x</button>
-                        <button id="speed-20" class="speed-btn px-3 py-1 rounded-md bg-slate-700 hover:bg-slate-600 text-xs font-bold transition-colors">2x</button>
+                        <button id="spd-1" class="speed-btn px-3 py-1 rounded bg-blue-900/50 text-blue-400 font-bold text-xs border border-blue-500/30">1x</button>
+                        <button id="spd-15" class="speed-btn px-3 py-1 rounded bg-slate-800 text-slate-400 font-bold text-xs">1.5x</button>
+                        <button id="spd-2" class="speed-btn px-3 py-1 rounded bg-slate-800 text-slate-400 font-bold text-xs">2x</button>
                     </div>
                 </div>
-                <div class="flex-1 w-full flex items-center gap-3">
-                    <span id="current-time" class="text-xs text-slate-400 font-mono">0:00</span>
-                    <input type="range" id="audio-progress" class="flex-1" value="0" min="0" max="100">
-                    <span id="duration" class="text-xs text-slate-400 font-mono">0:00</span>
+            </div>
+
+            <div class="flex-1 w-full">
+                <div class="flex justify-between text-[10px] text-slate-500 font-bold mb-2 uppercase tracking-tighter">
+                    <span id="para-indicator">Select a paragraph to play</span>
+                    <span id="voice-name">Optimizing Voice...</span>
                 </div>
-                <div id="status-indicator" class="hidden items-center gap-2 text-emerald-400 text-sm font-semibold">
-                    <i class="fas fa-circle-notch fa-spin"></i>
-                    <span class="animate-pulse">Loading Voice...</span>
+                <div class="relative h-2 bg-slate-800 rounded-full overflow-hidden">
+                    <div id="progress-bar" class="absolute top-0 left-0 h-full bg-blue-500 transition-all duration-300" style="width: 0%"></div>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        const apiKey = ""; 
         const paragraphs = [
             "what we are analyzing today is a high-precision mean reversion strategy designed specifically for binary options. This approach, often utilized by top traders, operates on the fundamental economic principle of market elasticity. The core concept here is that price action behaves like a rubber band; when it is stretched too far in a short period, it inevitably snaps back. We are not looking to predict the trend for the next hour; we are looking to capitalize on the immediate, inevitable reaction to price exhaustion.",
             "Let’s begin with the technical architecture of our chart, as displayed in the first visual. To execute this strategy effectively, we must operate in a high-frequency environment. We set our chart timeframe to 30-second candlesticks. This specific timeframe is crucial because it allows us to see the granular volatility that longer timeframes hide. Paired with this, our trade expiration time is set strictly to one minute. This 2:1 ratio between expiration and candle time gives the market exactly enough time to produce the 'pullback' reaction we are targeting.",
@@ -230,109 +221,140 @@
             "To implement this strategy effectively, you need a broker that offers precise execution and the specific indicators we discussed. For those ready to start applying this method, you can register for a reliable trading account using the official link displayed here: https://bit.ly/poregister"
         ];
 
-        let audio = new Audio();
         let currentIndex = -1;
+        let speechRate = 1.0;
+        const synth = window.speechSynthesis;
+        let currentUtterance = null;
+
+        // UI Elements
         const playIcon = document.getElementById('play-icon');
-        const audioBtn = document.getElementById('btn-play-pause');
-        const statusInd = document.getElementById('status-indicator');
-        const progress = document.getElementById('audio-progress');
-        const currentTimeEl = document.getElementById('current-time');
-        const durationEl = document.getElementById('duration');
+        const progressBar = document.getElementById('progress-bar');
+        const paraIndicator = document.getElementById('para-indicator');
+        const voiceNameEl = document.getElementById('voice-name');
 
-        async function generateTTS(text) {
-            statusInd.style.display = 'flex';
-            audioBtn.disabled = true;
-            const payload = {
-                contents: [{ parts: [{ text: `Say clearly in a professional American male voice: ${text}` }] }],
-                generationConfig: {
-                    responseModalities: ["AUDIO"],
-                    speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Kore" } } }
-                },
-                model: "gemini-2.5-flash-preview-tts"
-            };
-            try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const result = await response.json();
-                const pcmData = result.candidates[0].content.parts[0].inlineData.data;
-                const sampleRate = parseInt(result.candidates[0].content.parts[0].inlineData.mimeType.match(/rate=(\d+)/)?.[1] || "24000");
-                return URL.createObjectURL(pcmToWav(pcmData, sampleRate));
-            } catch (e) {
-                console.error(e);
-                statusInd.style.display = 'none';
-                audioBtn.disabled = false;
-                return null;
-            }
+        function initContent() {
+            const sections = [
+                { id: 'section-1', range: [0, 2] },
+                { id: 'section-2', range: [3, 5] },
+                { id: 'section-3', range: [6, 9] }
+            ];
+
+            sections.forEach(sec => {
+                const el = document.getElementById(sec.id);
+                for (let i = sec.range[0]; i <= sec.range[1]; i++) {
+                    const card = document.createElement('div');
+                    card.className = 'paragraph-card p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg';
+                    card.id = `para-${i}`;
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start gap-4">
+                            <p class="leading-relaxed text-slate-200 text-lg">${paragraphs[i]}</p>
+                            <div class="playing-waves">
+                                <div class="wave-bar" style="animation-delay: 0.1s"></div>
+                                <div class="wave-bar" style="animation-delay: 0.3s"></div>
+                                <div class="wave-bar" style="animation-delay: 0.2s"></div>
+                            </div>
+                        </div>
+                    `;
+                    card.onclick = () => playParagraph(i);
+                    el.appendChild(card);
+                }
+            });
         }
 
-        function pcmToWav(base64, rate) {
-            const buffer = Uint8Array.from(atob(base64), c => c.charCodeAt(0)).buffer;
-            const header = new ArrayBuffer(44);
-            const view = new DataView(header);
-            view.setUint32(0, 0x52494646, false); 
-            view.setUint32(4, 36 + buffer.byteLength, true);
-            view.setUint32(8, 0x57415645, false);
-            view.setUint32(12, 0x666d7420, false);
-            view.setUint32(16, 16, true);
-            view.setUint16(20, 1, true);
-            view.setUint16(22, 1, true);
-            view.setUint32(24, rate, true);
-            view.setUint32(28, rate * 2, true);
-            view.setUint16(32, 2, true);
-            view.setUint16(34, 16, true);
-            view.setUint32(36, 0x64617461, false);
-            view.setUint32(40, buffer.byteLength, true);
-            return new Blob([header, buffer], { type: 'audio/wav' });
+        function getBestVoice() {
+            const voices = synth.getVoices();
+            // Prefer "Natural" or "Google" English voices
+            const preferred = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha')));
+            const fallback = voices.find(v => v.lang.startsWith('en'));
+            return preferred || fallback || voices[0];
         }
 
-        async function playParagraph(index) {
-            if (currentIndex === index && !audio.paused) {
-                audio.pause();
+        function playParagraph(index) {
+            if (currentIndex === index && synth.speaking) {
+                if (synth.paused) synth.resume();
+                else synth.pause();
+                updatePlayIcon();
                 return;
             }
-            document.querySelectorAll('.paragraph-card').forEach(p => p.classList.remove('active'));
-            const activeCard = document.getElementById(`para-${index}`);
-            activeCard.classList.add('active');
-            activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
+
+            synth.cancel();
             currentIndex = index;
-            const url = await generateTTS(paragraphs[index]);
-            if (url) {
-                audio.src = url;
-                audio.play();
-                statusInd.style.display = 'none';
-                audioBtn.disabled = false;
+
+            document.querySelectorAll('.paragraph-card').forEach(c => c.classList.remove('active'));
+            document.getElementById(`para-${index}`).classList.add('active');
+            paraIndicator.innerText = `Reading Paragraph ${index + 1} of ${paragraphs.length}`;
+
+            const utterance = new SpeechSynthesisUtterance(paragraphs[index]);
+            const voice = getBestVoice();
+            utterance.voice = voice;
+            utterance.rate = speechRate;
+            utterance.pitch = 1.0;
+            
+            if(voice) voiceNameEl.innerText = `Voice: ${voice.name}`;
+
+            utterance.onstart = () => {
+                updatePlayIcon();
+                progressBar.style.width = '0%';
+            };
+
+            utterance.onend = () => {
+                updatePlayIcon();
+                progressBar.style.width = '100%';
+                if (currentIndex < paragraphs.length - 1) {
+                    setTimeout(() => playParagraph(currentIndex + 1), 800);
+                }
+            };
+
+            utterance.onerror = (e) => console.error('Speech error:', e);
+
+            currentUtterance = utterance;
+            synth.speak(utterance);
+        }
+
+        function updatePlayIcon() {
+            if (synth.speaking && !synth.paused) {
+                playIcon.className = 'fas fa-pause text-2xl';
+            } else {
+                playIcon.className = 'fas fa-play text-2xl';
             }
         }
 
-        audioBtn.onclick = () => audio.src ? (audio.paused ? audio.play() : audio.pause()) : playParagraph(0);
-        audio.onplay = () => playIcon.className = 'fas fa-pause';
-        audio.onpause = () => playIcon.className = 'fas fa-play';
-        audio.onended = () => (currentIndex < paragraphs.length - 1) ? playParagraph(currentIndex + 1) : null;
-        audio.ontimeupdate = () => {
-            const p = (audio.currentTime / audio.duration) * 100;
-            progress.value = isNaN(p) ? 0 : p;
-            currentTimeEl.innerText = formatTime(audio.currentTime);
-            durationEl.innerText = formatTime(audio.duration);
+        document.getElementById('btn-play-pause').onclick = () => {
+            if (currentIndex === -1) playParagraph(0);
+            else {
+                if (synth.paused) synth.resume();
+                else if (synth.speaking) synth.pause();
+                else playParagraph(currentIndex);
+                updatePlayIcon();
+            }
         };
-        progress.oninput = () => audio.currentTime = (progress.value / 100) * audio.duration;
-        function setSpeed(rate, btn) {
-            audio.playbackRate = rate;
-            document.querySelectorAll('.speed-btn').forEach(b => b.className = 'speed-btn px-3 py-1 rounded-md bg-slate-700 hover:bg-slate-600 text-xs font-bold transition-colors');
-            btn.className = 'speed-btn px-3 py-1 rounded-md bg-blue-900/50 text-xs font-bold text-blue-400 border border-blue-400/30';
+
+        // Speed Controls
+        function setSpeed(rate, btnId) {
+            speechRate = rate;
+            document.querySelectorAll('.speed-btn').forEach(btn => {
+                btn.className = 'speed-btn px-3 py-1 rounded bg-slate-800 text-slate-400 font-bold text-xs';
+            });
+            document.getElementById(btnId).className = 'speed-btn px-3 py-1 rounded bg-blue-900/50 text-blue-400 font-bold text-xs border border-blue-500/30';
+            
+            if (synth.speaking) {
+                const currentIdx = currentIndex;
+                synth.cancel();
+                playParagraph(currentIdx);
+            }
         }
-        document.getElementById('speed-10').onclick = (e) => setSpeed(1.0, e.target);
-        document.getElementById('speed-15').onclick = (e) => setSpeed(1.5, e.target);
-        document.getElementById('speed-20').onclick = (e) => setSpeed(2.0, e.target);
-        function formatTime(s) {
-            if (isNaN(s)) return "0:00";
-            const m = Math.floor(s / 60);
-            const sec = Math.floor(s % 60);
-            return `${m}:${sec < 10 ? '0' : ''}${sec}`;
-        }
+
+        document.getElementById('spd-1').onclick = () => setSpeed(1.0, 'spd-1');
+        document.getElementById('spd-15').onclick = () => setSpeed(1.4, 'spd-15');
+        document.getElementById('spd-2').onclick = () => setSpeed(1.8, 'spd-2');
+
+        // Init voices
+        window.speechSynthesis.onvoiceschanged = () => {
+            const v = getBestVoice();
+            if(v) voiceNameEl.innerText = `Voice: ${v.name}`;
+        };
+
+        window.onload = initContent;
     </script>
 </body>
 </html>
