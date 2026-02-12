@@ -1,10 +1,3 @@
-/**
- * Cloudflare Worker to serve the Pocket Option Strategy Guide
- */
-
-export default {
-  async fetch(request, env, ctx) {
-    const html = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,58 +87,64 @@ export default {
         <h1 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-2">
             Pocket Option High-Frequency Strategy
         </h1>
-        <p class="text-slate-400 text-lg mb-4">Mastering the Mean Reversion (RSI & Stochastic)</p>
+        <p class="text-slate-400 text-lg mb-4 text-center">Mastering the Mean Reversion (RSI & Stochastic)</p>
         <div class="inline-block px-4 py-2 bg-slate-800 rounded-full border border-slate-700 shadow-lg">
-            <span class="highlight-cta text-xl md:text-2xl">
+            <span class="highlight-cta text-xl md:text-2xl text-center block">
                 Turn your $10 into $500 in less than three hours with this strategy
             </span>
         </div>
     </header>
 
     <main class="max-w-4xl mx-auto px-6 py-8">
+        <!-- FIRST REGISTRATION LINK -->
         <a href="https://bit.ly/poregister" target="_blank" class="reg-banner flex items-center justify-between p-4 rounded-xl mb-10 border border-blue-400/30">
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 text-center w-full justify-center">
                 <i class="fas fa-rocket text-yellow-400 text-xl"></i>
                 <span class="font-bold text-white">Get Started: Register your account here</span>
             </div>
-            <i class="fas fa-chevron-right text-white/50"></i>
         </a>
 
+        <!-- PART 1: OVERVIEW & IMAGE 01 -->
         <section class="image-container">
             <img src="image01.jpg" alt="Strategy Overview" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+01+-+Strategy+Setup'">
         </section>
 
         <div id="para-group-1" class="space-y-6 mb-12"></div>
 
+        <!-- MIDDLE REGISTRATION LINK -->
         <div class="bg-slate-800/80 p-6 rounded-2xl border border-blue-500/20 text-center mb-12">
-            <h3 class="text-lg font-semibold text-blue-300 mb-4">Ready to test this on a Live/Demo account?</h3>
+            <h3 class="text-lg font-semibold text-blue-300 mb-4 text-center">Ready to test this on a Live/Demo account?</h3>
             <a href="https://bit.ly/poregister" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-lg transition-colors">
                 Register & Trade Now
             </a>
         </div>
 
+        <!-- PART 2: EXECUTION & IMAGE 03 (MIDDLE IMAGE) -->
         <section class="image-container">
             <img src="image03.jpg" alt="Execution Rules" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+03+-+Execution+Rules'">
         </section>
 
         <div id="para-group-2" class="space-y-6 mb-12"></div>
 
+        <!-- PART 3: TECHNICALS & IMAGE 02 (LAST IMAGE) -->
         <section class="image-container">
             <img src="image02.jpg" alt="Technical Setup" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+02+-+Technical+Setup'">
         </section>
 
         <div id="para-group-3" class="space-y-6 mb-12"></div>
 
+        <!-- FINAL REGISTRATION LINK -->
         <div class="mt-16 text-center p-10 bg-gradient-to-br from-blue-900/40 to-slate-900 border border-blue-500/30 rounded-2xl">
-            <h2 class="text-2xl font-bold mb-4">Start Your Trading Journey</h2>
-            <p class="text-slate-300 mb-8">Join thousands of successful traders using our high-frequency approach.</p>
+            <h2 class="text-2xl font-bold mb-4 text-center">Start Your Trading Journey</h2>
+            <p class="text-slate-300 mb-8 text-center">Join thousands of successful traders using our high-frequency approach.</p>
             <a href="https://bit.ly/poregister" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-12 rounded-full transition-transform transform hover:scale-105 shadow-xl shadow-blue-500/20">
                 REGISTER FOR LIFETIME ACCESS <i class="fas fa-external-link-alt ml-2"></i>
             </a>
-            <p class="mt-6 text-sm text-slate-500 italic">https://bit.ly/poregister</p>
+            <p class="mt-6 text-sm text-slate-500 italic text-center">https://bit.ly/poregister</p>
         </div>
     </main>
 
+    <!-- Audio Player Controller -->
     <footer class="fixed bottom-0 left-0 w-full glass-effect z-50 px-6 py-4">
         <div class="max-w-4xl mx-auto">
             <div class="flex flex-col md:flex-row items-center gap-4">
@@ -207,8 +206,8 @@ export default {
                 for (let i = group.range[0]; i <= group.range[1]; i++) {
                     const card = document.createElement('div');
                     card.className = 'paragraph-card p-6 rounded-xl bg-slate-800/40 border border-slate-700/50';
-                    card.id = \`para-\${i}\`;
-                    card.innerHTML = \`<p class="leading-relaxed text-slate-200 text-lg">\${paragraphs[i]}</p>\`;
+                    card.id = `para-${i}`;
+                    card.innerHTML = `<p class="leading-relaxed text-slate-200 text-lg">${paragraphs[i]}</p>`;
                     card.onclick = () => playParagraph(i);
                     parent.appendChild(card);
                 }
@@ -219,7 +218,7 @@ export default {
             statusInd.style.display = 'flex';
             audioBtn.disabled = true;
             const payload = {
-                contents: [{ parts: [{ text: \`Say clearly in a professional American male voice: \${text}\` }] }],
+                contents: [{ parts: [{ text: `Say clearly in a professional American male voice: ${text}` }] }],
                 generationConfig: {
                     responseModalities: ["AUDIO"],
                     speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Kore" } } }
@@ -227,14 +226,14 @@ export default {
                 model: "gemini-2.5-flash-preview-tts"
             };
             try {
-                const response = await fetch(\`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=\${apiKey}\`, {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
                 const result = await response.json();
                 const pcmData = result.candidates[0].content.parts[0].inlineData.data;
-                const sampleRate = parseInt(result.candidates[0].content.parts[0].inlineData.mimeType.match(/rate=(\\d+)/)?.[1] || "24000");
+                const sampleRate = parseInt(result.candidates[0].content.parts[0].inlineData.mimeType.match(/rate=(\d+)/)?.[1] || "24000");
                 return URL.createObjectURL(pcmToWav(pcmData, sampleRate));
             } catch (e) {
                 console.error(e);
@@ -270,7 +269,10 @@ export default {
                 return;
             }
             document.querySelectorAll('.paragraph-card').forEach(p => p.classList.remove('active'));
-            document.getElementById(\`para-\${index}\`).classList.add('active');
+            const activeCard = document.getElementById(`para-${index}`);
+            activeCard.classList.add('active');
+            activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
             currentIndex = index;
             const url = await generateTTS(paragraphs[index]);
             if (url) {
@@ -304,18 +306,9 @@ export default {
             if (isNaN(s)) return "0:00";
             const m = Math.floor(s / 60);
             const sec = Math.floor(s % 60);
-            return \`\${m}:\${sec < 10 ? '0' : ''}\${sec}\`;
+            return `${m}:${sec < 10 ? '0' : ''}${sec}`;
         }
         renderParagraphs();
     </script>
 </body>
 </html>
-    `;
-
-    return new Response(html, {
-      headers: {
-        "content-type": "text/html;charset=UTF-8",
-      },
-    });
-  },
-};
