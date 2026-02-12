@@ -36,9 +36,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        [dir="rtl"] .paragraph-card:hover { border-right-color: #3b82f6; border-left-color: transparent; }
-        [dir="rtl"] .paragraph-card.active { border-right-color: #10b981; border-left-color: transparent; }
-
         .glass-effect {
             background: rgba(30, 41, 59, 0.95);
             backdrop-filter: blur(12px);
@@ -52,7 +49,29 @@
             height: auto;
             margin-bottom: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-container a:hover img {
+            transform: scale(1.01);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        input[type=range] {
+            height: 6px;
+            -webkit-appearance: none;
+            background: #334155;
+            border-radius: 5px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
         }
 
         .reg-banner {
@@ -67,12 +86,33 @@
             border: 1px solid rgba(96, 165, 250, 0.3);
             text-decoration: none;
         }
+        .reg-banner:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+        }
 
         .highlight-cta {
             background: linear-gradient(45deg, #f59e0b, #ef4444);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 800;
+        }
+
+        .playing-waves {
+            display: none;
+            align-items: center;
+            gap: 2px;
+        }
+        .active .playing-waves { display: flex; }
+        .wave-bar {
+            width: 3px;
+            height: 15px;
+            background: #10b981;
+            animation: wave 1s ease-in-out infinite;
+        }
+        @keyframes wave {
+            0%, 100% { height: 5px; }
+            50% { height: 20px; }
         }
 
         .video-wrapper {
@@ -82,8 +122,15 @@
             overflow: hidden;
             border-radius: 1rem;
             box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            border: 2px solid rgba(59, 130, 246, 0.2);
         }
-
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
         .video-overlay-link {
             position: absolute;
             top: 0;
@@ -96,10 +143,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background 0.3s;
+        }
+        .video-overlay-link:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .play-overlay-btn {
+            background: rgba(59, 130, 246, 0.95);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
         }
 
         select {
-            background-image: none;
             appearance: none;
             -webkit-appearance: none;
         }
@@ -110,40 +171,23 @@
     <!-- Header -->
     <header class="bg-slate-900 py-8 px-6 text-center border-b border-slate-800 sticky top-0 z-[100]">
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="text-left rtl:text-right">
-                <h1 id="main-title" class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
-                    Pocket Option Strategy
-                </h1>
-            </div>
+            <h1 id="main-title" class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+                Pocket Option Strategy
+            </h1>
             
-            <!-- Language Dropdown -->
             <div class="relative inline-block w-64">
-                <select id="lang-select" onchange="changeLanguage()" class="w-full bg-slate-800 text-white border border-slate-700 py-2 px-4 rounded-lg cursor-pointer hover:bg-slate-700 transition-colors outline-none">
+                <select id="lang-select" onchange="changeLanguage()" class="w-full bg-slate-800 text-white border border-slate-700 py-2 px-4 rounded-lg cursor-pointer hover:bg-slate-700 transition-colors outline-none font-bold">
                     <option value="en">🇺🇸 English</option>
-                    <option value="fa">🇮🇷 فارسی (Persian)</option>
-                    <option value="tr">🇹🇷 Türkçe (Turkish)</option>
-                    <option value="de">🇩🇪 Deutsch (German)</option>
                     <option value="fr">🇫🇷 Français (French)</option>
-                    <option value="es">🇪🇸 Español (Spanish)</option>
-                    <option value="ar">SA العربية (Arabic)</option>
                     <option value="ru">🇷🇺 Русский (Russian)</option>
-                    <option value="zh">🇨🇳 中文 (Chinese)</option>
-                    <option value="ja">🇯🇵 日本語 (Japanese)</option>
-                    <option value="el">🇬🇷 Ελληνικά (Greek)</option>
-                    <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
-                    <option value="id">🇮🇩 Indonesia (Indonesian)</option>
-                    <option value="pt">🇧🇷 Português (Portuguese)</option>
-                    <option value="it">🇮🇹 Italiano (Italian)</option>
-                    <option value="ko">🇰🇷 한국어 (Korean)</option>
-                    <option value="vi">🇻🇳 Tiếng Việt (Vietnamese)</option>
-                    <option value="th">🇹🇭 ไทย (Thai)</option>
-                    <option value="nl">🇳🇱 Nederlands (Dutch)</option>
-                    <option value="pl">🇵🇱 Polski (Polish)</option>
+                    <option value="de">🇩🇪 Deutsch (German)</option>
+                    <option value="tr">🇹🇷 Türkçe (Turkish)</option>
+                    <option value="es">🇪🇸 Español (Spanish)</option>
                 </select>
             </div>
         </div>
         <div class="mt-4">
-            <span id="promo-text" class="highlight-cta text-lg md:text-xl block italic">
+            <span id="promo-text" class="highlight-cta text-lg md:text-xl block italic text-center">
                 Turn your $10 into $500 in less than three hours with this strategy
             </span>
         </div>
@@ -151,7 +195,6 @@
 
     <main class="max-w-4xl mx-auto px-6 py-10">
         
-        <!-- REGISTRATION BANNERS & IMAGES -->
         <a id="reg-btn-1" href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" class="reg-banner group">
             <span class="font-bold text-white text-xl">Register Now: Start Trading Today</span>
         </a>
@@ -162,11 +205,11 @@
             </a>
         </section>
 
-        <div id="section-1" class="text-left rtl:text-right"></div>
+        <div id="section-1" class="text-left"></div>
 
         <div class="bg-slate-800/80 p-8 rounded-3xl border border-blue-500/20 text-center my-14 shadow-2xl">
-            <h3 id="mid-cta-text" class="text-xl font-bold text-blue-300 mb-6">Apply this logic to your trading account instantly</h3>
-            <a id="reg-btn-2" href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105">
+            <h3 id="mid-cta-text" class="text-xl font-bold text-blue-300 mb-6 text-center">Apply this logic to your trading account instantly</h3>
+            <a id="reg-btn-2" href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 text-lg">
                 Open Your Account
             </a>
         </div>
@@ -177,7 +220,7 @@
             </a>
         </section>
 
-        <div id="section-2" class="text-left rtl:text-right"></div>
+        <div id="section-2" class="text-left"></div>
 
         <section class="image-container mt-14">
             <a href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank">
@@ -185,37 +228,35 @@
             </a>
         </section>
 
-        <div id="section-3" class="text-left rtl:text-right"></div>
+        <div id="section-3" class="text-left"></div>
 
-        <!-- VIDEO SECTION -->
         <section class="my-14">
-            <h2 id="video-title" class="text-xl font-bold text-blue-400 mb-6 uppercase tracking-wider">Strategy Tutorial Video</h2>
+            <h2 id="video-title" class="text-xl font-bold text-blue-400 mb-6 uppercase tracking-wider text-center">Strategy Tutorial Video</h2>
             <div class="video-wrapper">
                 <iframe id="strategy-video" src="https://www.youtube.com/embed/uHBGVVJb34Y?enablejsapi=1&mute=0&controls=1" frameborder="0" allowfullscreen></iframe>
                 <div class="video-overlay-link" onclick="handleVideoPlay(event)">
-                    <div class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold shadow-2xl hover:scale-105 transition-transform">
-                        WATCH & REGISTER
+                    <div class="play-overlay-btn">
+                        <i class="fas fa-play text-2xl"></i> WATCH & REGISTER
                     </div>
                 </div>
             </div>
         </section>
 
         <div id="final-banner" class="mt-20 text-center p-12 bg-gradient-to-br from-blue-900/60 to-slate-900 border border-blue-500/40 rounded-3xl shadow-2xl">
-            <h2 id="final-title" class="text-3xl font-bold mb-6">Join the Elite 5%</h2>
-            <a id="reg-btn-3" href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-black py-5 px-16 rounded-full transition-all transform hover:scale-110 shadow-2xl uppercase tracking-widest">
+            <h2 id="final-title" class="text-3xl font-bold mb-6 italic text-center">Join the Elite 5%</h2>
+            <a id="reg-btn-3" href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-black py-5 px-16 rounded-full transition-all transform hover:scale-110 shadow-2xl uppercase tracking-widest text-lg">
                 Register & Trade Now
             </a>
         </div>
     </main>
 
-    <!-- Audio Player -->
     <footer class="fixed bottom-0 left-0 w-full glass-effect z-50 px-6 py-6 border-t border-slate-800">
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
             <div class="flex items-center gap-5">
                 <button id="btn-play-pause" class="w-16 h-16 rounded-full bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-white shadow-2xl">
                     <i id="play-icon" class="fas fa-play text-2xl"></i>
                 </button>
-                <div class="flex flex-col items-start text-left rtl:text-right">
+                <div class="flex flex-col items-start text-left">
                     <span id="label-speed" class="text-xs font-bold text-slate-500 uppercase">Speed</span>
                     <div class="flex gap-2">
                         <button onclick="setSpeed(1.0, this)" class="spd-btn px-2 py-1 rounded bg-blue-900/50 text-blue-400 text-xs font-bold">1x</button>
@@ -224,7 +265,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex-1 w-full text-left rtl:text-right">
+            <div class="flex-1 w-full text-left">
                 <span id="para-indicator" class="text-[10px] text-slate-500 font-bold uppercase block mb-2">Select a paragraph</span>
                 <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
                     <div id="progress-bar" class="h-full bg-blue-500 transition-all duration-300" style="width: 0%"></div>
@@ -238,7 +279,7 @@
         
         const dictionary = {
             en: {
-                dir: "ltr",
+                lang: "en-US",
                 title: "Pocket Option Strategy",
                 promo: "Turn your $10 into $500 in less than three hours with this strategy",
                 reg_now: "Register Now: Start Trading Today",
@@ -247,67 +288,124 @@
                 video_t: "Strategy Tutorial Video",
                 final_t: "Join the Elite 5%",
                 speed: "Speed",
-                indicator: "Select a paragraph",
+                indicator: "Select a paragraph to read",
                 paragraphs: [
-                    "what we are analyzing today is a high-precision mean reversion strategy designed specifically for binary options. This approach operates on market elasticity. The core concept is that price action behaves like a rubber band; when stretched too far, it inevitably snaps back.",
-                    "Let’s begin with the technical architecture. We set our chart timeframe to 30-second candlesticks. This specific timeframe allows us to see the granular volatility. Our trade expiration time is set strictly to one minute.",
-                    "The primary driver is the Relative Strength Index (RSI). We have configured RSI with key levels at 70 and 30. The 70 level represents 'Overbought' where exhaustion occurs. The 30 level represents the 'Oversold' floor.",
-                    "To filter out false signals, we incorporate the Stochastic Oscillator. We utilize levels of 80 and 20. When both RSI and Stochastic align in these extreme zones, the probability of a reversal increases exponentially.",
-                    "For the 'Call' or Buy setup, we wait for the market to dive. We look for the moment RSI hits or breaks below 30. This is our trigger to enter a Call trade for one minute, anticipating an upward correction.",
-                    "Conversely, for the 'Put' setup, we look for irrational exuberance. When RSI hits or pierces 70, the asset is overbought. We strike immediately with a Put trade for one minute to capture the initial drop.",
-                    "This strategy is purely reactive, not predictive. We are not guessing where the price will go; we are reacting to where the price is. Patience separates profitable traders from gamblers.",
-                    "Furthermore, risk management is built into the time expiration. By using one-minute expiration on 30-second candles, we avoid holding positions during long-term consolidations.",
-                    "In summary, the efficiency of this strategy lies in its simplicity and reliance on unchangeable market mechanics. Master the RSI 70/30 and Stochastic 80/20 on a 30-second timeframe to gain an edge.",
-                    "To implement this effectively, you need a broker that offers precise execution. Register for a reliable trading account using the official link displayed here."
+                    "What we are analyzing today is a high-precision mean reversion strategy designed specifically for binary options. This approach, often utilized by top traders, operates on the fundamental economic principle of market elasticity. The core concept here is that price action behaves like a rubber band; when it is stretched too far in a short period, it inevitably snaps back. We are not looking to predict the trend for the next hour; we are looking to capitalize on the immediate, inevitable reaction to price exhaustion.",
+                    "Let’s begin with the technical architecture of our chart, as displayed in the first visual. To execute this strategy effectively, we must operate in a high-frequency environment. We set our chart timeframe to 30-second candlesticks. This specific timeframe is crucial because it allows us to see the granular volatility that longer timeframes hide. Paired with this, our trade expiration time is set strictly to one minute. This 2:1 ratio between expiration and candle time gives the market exactly enough time to produce the 'pullback' reaction we are targeting.",
+                    "Now, looking at our indicators, we strip away the noise and focus on momentum oscillators. The primary driver of this strategy is the Relative Strength Index, or RSI. We have configured the RSI with key levels at 70 and 30. The 70 level represents the ceiling—the zone of 'Overbought' conditions where buyer exhaustion occurs. Conversely, the 30 level represents the floor—the 'Oversold' zone where sellers are losing momentum. This indicator serves as our primary signal for entry.",
+                    "To filter out false signals, we incorporate a secondary confirmation tool: the Stochastic Oscillator. While the RSI tracks the speed of price change, the Stochastic helps us identify the momentum relative to the high-low range. We utilize the levels of 80 and 20 for this oscillator. When both the RSI and the Stochastic align in these extreme zones, the probability of a reversal increases exponentially, providing us with a high-confidence setup.",
+                    "Let’s discuss the psychology behind the 'Call' or Buy setup. As you can see in the bullish scenario on the infographic, we patiently wait for the market to dive. We are looking for the moment the RSI line hits or breaks below the 30 level. At this precise moment, the asset is mathematically oversold. The selling pressure is unsustainable in the short term, and the market must breathe. This is our trigger to enter a Call trade for one minute, anticipating that immediate upward correction.",
+                    "Conversely, for the 'Put' or Sell setup, we look for irrational exuberance in the price. When the candles surge upward and the RSI line hits or pierces the 70 level, we know the asset is overbought. The 'rubber band' is stretched to its limit. At this peak, the buyers are exhausted, and a drop is imminent. We do not wait for a long trend reversal; we strike immediately with a Put trade for one minute to capture the initial drop.",
+                    "It is important to understand that this strategy is purely reactive, not predictive. We are not guessing where the price will go; we are reacting to where the price is. The beauty of this approach lies in its discipline. If the RSI does not touch the 30 or 70 lines, we do not trade. We remain on the sidelines like a sniper waiting for the perfect alignment. This patience is what separates profitable traders from gamblers.",
+                    "Furthermore, risk management in this strategy is built into the time expiration. By using a fixed one-minute expiration on 30-second candles, we avoid the trap of holding positions during long-term consolidations. We enter during high volatility, capture the reaction, and exit. This rapid turnover allows for multiple opportunities within a single trading session, compounding small wins into significant daily targets.",
+                    "In summary, the efficiency of this strategy for 2026 and beyond lies in its simplicity and reliance on unchangeable market mechanics. Markets will always overreact to news and volume spikes, and they will always correct back to the mean. By mastering the RSI 70/30 and Stochastic 80/20 levels on a 30-second timeframe, you are equipping yourself with a mathematical edge over the house.",
+                    "To implement this strategy effectively, you need a broker that offers precise execution and the specific indicators we discussed. For those ready to start applying this method, you can register for a reliable trading account using the official link displayed here."
                 ]
             },
-            fa: {
-                dir: "rtl",
-                title: "استراتژی پاکت آپشن",
-                promo: "با این استراتژی ۱۰ دلار خود را در کمتر از سه ساعت به ۵۰۰ دلار تبدیل کنید",
-                reg_now: "همین حالا ثبت‌نام کنید: ترید را از امروز شروع کنید",
-                mid_cta: "این منطق را بلافاصله در حساب ترید خود اعمال کنید",
-                open_acc: "افتتاح حساب شما",
-                video_t: "ویدئو آموزشی استراتژی",
-                final_t: "به ۵ درصد برتر بپیوندید",
-                speed: "سرعت پخش",
-                indicator: "یک پاراگراف را انتخاب کنید",
+            fr: {
+                lang: "fr-FR",
+                title: "Stratégie Pocket Option",
+                promo: "Transformez vos 10 $ en 500 $ en moins de trois heures avec cette stratégie",
+                reg_now: "Inscrivez-vous maintenant : Commencez à trader dès aujourd'hui",
+                mid_cta: "Appliquez cette logique instantanément à votre compte de trading",
+                open_acc: "Ouvrez votre compte",
+                video_t: "Tutoriel vidéo de la stratégie",
+                final_t: "Rejoignez l'élite des 5 %",
+                speed: "Vitesse",
+                indicator: "Sélectionnez un paragraphe à lire",
                 paragraphs: [
-                    "آنچه امروز تحلیل می‌کنیم، یک استراتژی بازگشت به میانگین با دقت بالاست که مخصوص گزینه‌های باینری طراحی شده است. این رویکرد بر پایه اصل اقتصادی خاصیت ارتجاعی بازار عمل می‌کند. مفهوم اصلی این است که حرکت قیمت مانند یک کش لاستیکی عمل می‌کند؛ وقتی بیش از حد کشیده شود، ناگزیر به عقب باز می‌گردد.",
-                    "بیایید با ساختار فنی نمودار شروع کنیم. ما بازه زمانی نمودار خود را روی کندل‌های ۳۰ ثانیه‌ای تنظیم می‌کنیم. این بازه زمانی خاص به ما اجازه می‌دهد نوسانات جزئی را ببینیم. زمان انقضای معامله ما دقیقاً روی یک دقیقه تنظیم شده است.",
-                    "محرک اصلی این استراتژی شاخص قدرت نسبی یا همان RSI است. ما RSI را با سطوح کلیدی ۷۰ و ۳۰ پیکربندی کرده‌ایم. سطح ۷۰ نشان‌دهنده منطقه اشباع خرید است که در آن خستگی خریداران رخ می‌دهد. در مقابل، سطح ۳۰ نشان‌دهنده کف یا منطقه اشباع فروش است.",
-                    "برای فیلتر کردن سیگنال‌های کاذب، از نوسان‌گر استوکاستیک (Stochastic) استفاده می‌کنیم. ما از سطوح ۸۰ و ۲۰ برای این شاخص بهره می‌بریم. وقتی هر دو شاخص RSI و استوکاستیک در این مناطق افراطی همسو شوند، احتمال بازگشت قیمت به شدت افزایش می‌یابد.",
-                    "بیایید درباره سناریوی 'Call' یا خرید صحبت کنیم. ما منتظر می‌مانیم تا بازار شیرجه بزند. به دنبال لحظه‌ای هستیم که خط RSI به زیر سطح ۳۰ برسد. این ماشه ورود ما برای یک معامله خرید یک دقیقه‌ای به امید اصلاح رو به بالا است.",
-                    "در مقابل، برای سناریوی 'Put' یا فروش، به دنبال صعود غیرمنطقی قیمت هستیم. وقتی کندل‌ها بالا می‌روند و خط RSI سطح ۷۰ را لمس می‌کند، می‌دانیم دارایی بیش از حد خریداری شده است. اینجاست که معامله فروش یک دقیقه‌ای باز می‌کنیم.",
-                    "مهم است درک کنید که این استراتژی کاملاً واکنشی است، نه پیش‌بینی‌کننده. ما حدس نمی‌زنیم قیمت به کجا می‌رود؛ ما به جایی که قیمت در آن قرار دارد واکنش نشان می‌دهیم. صبر همان چیزی است که معامله‌گران سودده را از قماربازان جدا می‌کند.",
-                    "علاوه بر این، مدیریت ریسک در این استراتژی در زمان انقضا نهفته است. با استفاده از انقضای یک دقیقه‌ای در کندل‌های ۳۰ ثانیه‌ای، از نگه داشتن موقعیت در زمان تثبیت‌های طولانی‌مدت خودداری می‌کنیم.",
-                    "به طور خلاصه، کارایی این استراتژی در سادگی و تکیه بر مکانیک‌های تغییرناپذیر بازار است. با تسلط بر سطوح RSI و استوکاستیک در تایم‌فریم ۳۰ ثانیه، شما یک برتری ریاضی نسبت به بازار به دست می‌آورید.",
-                    "برای اجرای موثر این روش، به کارگزاری نیاز دارید که اجرای دقیق دستورات را ارائه دهد. از طریق لینک رسمی نمایش داده شده، برای افتتاح حساب معتبر اقدام کنید."
+                    "Ce que nous analysons aujourd'hui est une stratégie de retour à la moyenne de haute précision conçue spécifiquement pour les options binaires. Cette approche, souvent utilisée par les meilleurs traders, repose sur le principe économique fondamental de l'élasticité du marché. Le concept central est que l'action des prix se comporte comme un élastique ; lorsqu'il est trop étiré en peu de temps, il revient inévitablement en arrière. Nous ne cherchons pas à prédire la tendance pour l'heure suivante ; nous cherchons à capitaliser sur la réaction immédiate et inévitable à l'épuisement des prix.",
+                    "Commençons par l'architecture technique de notre graphique, telle qu'elle apparaît sur le premier visuel. Pour exécuter cette stratégie efficacement, nous devons opérer dans un environnement à haute fréquence. Nous réglons l'intervalle de notre graphique sur des bougies de 30 secondes. Cette période spécifique est cruciale car elle nous permet de voir la volatilité granulaire que les périodes plus longues cachent. Associé à cela, notre temps d'expiration des transactions est fixé strictement à une minute. Ce ratio de 2:1 entre l'expiration et le temps des bougies donne au marché exactement assez de temps pour produire la réaction de 'pullback' que nous ciblons.",
+                    "Maintenant, en regardant nos indicateurs, nous éliminons le bruit et nous nous concentrons sur les oscillateurs de momentum. Le moteur principal de cette stratégie est l'indice de force relative, ou RSI. Nous avons configuré le RSI avec des niveaux clés à 70 et 30. Le niveau 70 représente le plafond — la zone des conditions de 'Surachat' où l'épuisement des acheteurs se produit. Inversement, le niveau 30 représente le sol — la zone 'Survendue' où les vendeurs perdent leur momentum. Cet indicateur nous sert de signal principal d'entrée.",
+                    "Pour filtrer les faux signaux, nous incorporons un outil de confirmation secondaire : l'oscillateur stochastique. Alors que le RSI suit la vitesse du changement de prix, le stochastique nous aide à identifier le momentum par rapport à la plage haut-bas. Nous utilisons les niveaux de 80 et 20 pour cet oscillateur. Lorsque le RSI et le stochastique s'alignent tous deux dans ces zones extrêmes, la probabilité d'un retournement augmente de manière exponentielle, nous offrant une configuration à haute confiance.",
+                    "Discutons de la psychologie derrière la configuration 'Call' ou Achat. Comme vous pouvez le voir dans le scénario haussier sur l'infographie, nous attendons patiemment que le marché plonge. Nous cherchons le moment où la ligne RSI touche ou passe en dessous du niveau 30. À ce moment précis, l'actif est mathématiquement survendu. La pression à la vente est insoutenable à court terme, et le marché doit respirer. C'est notre déclencheur pour entrer dans une transaction Call d'une minute, en anticipant cette correction immédiate à la hausse.",
+                    "À l'inverse, pour la configuration 'Put' ou Vente, nous recherchons une exubérance irrationnelle du prix. Lorsque les bougies montent en flèche et que la ligne RSI touche ou perce le niveau 70, nous savons que l'actif est suracheté. L''élastique' est tendu à sa limite. À ce sommet, les acheteurs sont épuisés et une baisse est imminente. Nous n'attendons pas un long renversement de tendance ; nous frappons immédiatement avec une transaction Put d'une minute pour capturer la baisse initiale.",
+                    "Il est important de comprendre que cette stratégie est purement réactive, pas prédictive. Nous ne devinons pas où le prix ira ; nous réagissons à l'endroit où se trouve le prix. La beauté de cette approche réside dans sa discipline. Si le RSI ne touche pas les lignes 30 ou 70, nous ne tradons pas. Nous restons sur la touche comme un tireur d'élite attendant l'alignement parfait. Cette patience est ce qui sépare les traders rentables des parieurs.",
+                    "De plus, la gestion des risques dans cette stratégie est intégrée à l'expiration du temps. En utilisant une expiration fixe d'une minute sur des bougies de 30 secondes, nous évitons le piège de détenir des positions pendant les consolidations à long terme. Nous entrons pendant une forte volatilité, capturons la réaction et sortons. Ce renouvellement rapide permet de multiples opportunités au cours d'une seule session de trading, transformant de petits gains en objectifs quotidiens significatifs.",
+                    "En résumé, l'efficacité de cette stratégie pour 2026 et au-delà réside dans sa simplicité et sa dépendance à l'égard de la mécanique immuable du marché. Les marchés réagiront toujours de manière excessive aux nouvelles et aux pics de volume, et ils corrigeront toujours vers la moyenne. En maîtrisant les niveaux RSI 70/30 et Stochastique 80/20 sur un intervalle de 30 secondes, vous vous dotez d'un avantage mathématique sur le marché.",
+                    "Pour mettre en œuvre cette stratégie efficacement, vous avez besoin d'un courtier qui offre une exécution précise et les indicateurs spécifiques dont nous avons discuté. Pour ceux qui sont prêts à commencer à appliquer cette méthode, vous pouvez vous inscrire pour un compte de trading fiable en utilisant le lien officiel affiché ici."
+                ]
+            },
+            ru: {
+                lang: "ru-RU",
+                title: "Стратегия Pocket Option",
+                promo: "Превратите свои 10$ в 500$ менее чем за три часа с помощью этой стратегии",
+                reg_now: "Зарегистрируйтесь сейчас: Начните торговать сегодня",
+                mid_cta: "Мгновенно примените эту логику к своему торговому счету",
+                open_acc: "Открыть счет",
+                paragraphs: [
+                    "То, что мы сегодня анализируем, — это высокоточная стратегия возврата к среднему значению, разработанная специально для бинарных опционов. Этот подход, часто используемый ведущими трейдерами, основан на фундаментальном экономическом принципе эластичности рынка. Основная концепция здесь заключается в том, что движение цены ведет себя как резиновая лента; когда она слишком сильно растягивается за короткий период, она неизбежно отскакивает назад. Мы не стремимся предсказать тренд на ближайший час; мы стремимся извлечь выгоду из немедленной, неизбежной реакции на истощение цены.",
+                    "Давайте начнем с технической архитектуры нашего графика, как показано на первом изображении. Чтобы эффективно реализовать эту стратегию, мы должны работать в высокочастотной среде. Мы устанавливаем таймфрейм графика на 30-секундные свечи. Этот конкретный таймфрейм имеет решающее значение, так как он позволяет нам видеть детальную волатильность, которую скрывают более длинные таймфреймы. В сочетании с этим время экспирации нашей сделки установлено строго на одну минуту. Это соотношение 2:1 между экспирацией и временем свечи дает рынку ровно столько времени, сколько необходимо для возникновения реакции 'отката', на которую мы нацелены.",
+                    "Теперь, глядя на наши индикаторы, мы отсекаем шум и фокусируемся на осцилляторах импульса. Основным драйвером этой стратегии является индекс относительной силы, или RSI. Мы настроили RSI с ключевыми уровнями 70 и 30. Уровень 70 представляет собой потолок — зону условий 'перекупленности', где происходит истощение покупателей. Напротив, уровень 30 представляет собой пол — зону 'перепроданности', где продавцы теряют импульс. Этот индикатор служит нашим основным сигналом для входа.",
+                    "Чтобы отфильтровать ложные сигналы, мы включаем второстепенный инструмент подтверждения: стохастический осциллятор. В то время как RSI отслеживает скорость изменения цены, стохастик помогает нам определить импульс относительно диапазона максимумов и минимумов. Мы используем уровни 80 и 20 для этого осциллятора. Когда и RSI, и стохастик совпадают в этих экстремальных зонах, вероятность разворота возрастает экспоненциально, обеспечивая нам установку с высокой степенью уверенности.",
+                    "Давайте обсудим психологию настройки 'Call' (покупка). Как вы можете видеть в бычьем сценарии на инфографике, мы терпеливо ждем падения рынка. Мы ищем момент, когда линия RSI достигает или опускается ниже уровня 30. В этот точный момент актив математически перепродан. Давление продаж неустойчиво в краткосрочной перспективе, и рынку нужно 'передохнуть'. Это наш триггер для входа в сделку Call на одну минуту в ожидании немедленной восходящей коррекции.",
+                    "Напротив, для настройки 'Put' (продажа) мы ищем иррациональный избыток в цене. Когда свечи устремляются вверх и линия RSI достигает или пробивает уровень 70, мы знаем, что актив перекуплен. 'Резиновая лента' растянута до предела. На этом пике покупатели истощены, и падение неизбежно. Мы не ждем длительного разворота тренда; мы наносим удар немедленно, открывая сделку Put на одну минуту, чтобы поймать начальное падение.",
+                    "Важно понимать, что эта стратегия является чисто реактивной, а не прогностической. Мы не гадаем, куда пойдет цена; мы реагируем на то, где цена находится. Красота этого подхода заключается в его дисциплине. Если RSI не касается линий 30 или 70, мы не торгуем. Мы остаемся в стороне, как снайпер, ожидающий идеального совпадения. Это терпение — то, что отличает прибыльных трейдеров от азартных игроков.",
+                    "Кроме того, управление рисками в этой стратегии встроено в время экспирации. Используя фиксированную минутную экспирацию на 30-секундных свечах, мы избегаем ловушки удержания позиций во время долгосрочных консолидаций. Мы входим во время высокой волатильности, ловим реакцию и выходим. Этот быстрый оборот позволяет использовать множество возможностей в течение одной торговой сессии, превращая небольшие выигрыши в значительные ежедневные цели.",
+                    "Таким образом, эффективность этой стратегии в 2026 году и далее заключается в ее простоте и опоре на неизменную рыночную механику. Рынки всегда будут чрезмерно реагировать на новости и всплески объема, и они всегда будут корректироваться обратно к среднему значению. Освоив уровни RSI 70/30 и Stochastic 80/20 на 30-секундном таймфрейме, вы вооружаете себя математическим преимуществом над рынком.",
+                    "Для эффективного внедрения этой стратегии вам нужен брокер, который предлагает точное исполнение и конкретные индикаторы, которые мы обсуждали. Для тех, кто готов начать применять этот метод, вы можете зарегистрировать надежный торговый счет, используя официальную ссылку, указанную здесь."
+                ]
+            },
+            de: {
+                lang: "de-DE",
+                title: "Pocket Option Strategie",
+                promo: "Verwandeln Sie Ihre 10 $ mit dieser Strategie in weniger als drei Stunden in 500 $",
+                reg_now: "Jetzt registrieren: Starten Sie noch heute mit dem Trading",
+                mid_cta: "Wenden Sie diese Logik sofort auf Ihr Handelskonto an",
+                open_acc: "Konto eröffnen",
+                paragraphs: [
+                    "Was wir heute analysieren, ist eine hochpräzise Mean-Reversion-Strategie, die speziell für binäre Optionen entwickelt wurde. Dieser Ansatz, der oft von Top-Tradern genutzt wird, basiert auf dem fundamentalen wirtschaftlichen Prinzip der Marktlastizität. Das Kernkonzept besteht darin, dass sich die Preisbewegung wie ein Gummiband verhält; wenn es in kurzer Zeit zu weit gedehnt wird, schnappt es unweigerlich zurück. Wir versuchen nicht, den Trend für die nächste Stunde vorherzusagen; wir wollen von der unmittelbaren, unvermeidlichen Reaktion auf die Preiserschöpfung profitieren.",
+                    "Beginnen wir mit der technischen Architektur unseres Charts, wie sie in der ersten Abbildung dargestellt ist. Um diese Strategie effektiv umzusetzen, müssen wir in einem Hochfrequenzumfeld agieren. Wir stellen unseren Chart-Zeitrahmen auf 30-Sekunden-Candlesticks ein. Dieser spezifische Zeitrahmen ist entscheidend, da er uns erlaubt, die granulare Volatilität zu sehen, die längere Zeitrahmen verbergen. Gepaart damit ist unsere Handelsablaufzeit strikt auf eine Minute festgelegt. Dieses Verhältnis von 2:1 zwischen Ablaufzeit und Kerzenzeit gibt dem Markt genau genug Zeit, um die von uns angestrebte 'Pullback'-Reaktion zu erzeugen.",
+                    "Schauen wir uns nun unsere Indikatoren an: Wir blenden das Rauschen aus und konzentrieren uns auf Momentum-Oszillatoren. Der Haupttreiber dieser Strategie ist der Relative Strength Index, kurz RSI. Wir haben den RSI mit den Schlüssellevels 70 und 30 konfiguriert. Das 70er Level stellt die Decke dar – die Zone der 'Überkauft'-Bedingungen, in der die Erschöpfung der Käufer eintritt. Umgekehrt stellt das 30er Level den Boden dar – die 'Überverkauft'-Zone, in der die Verkäufer an Momentum verlieren. Dieser Indikator dient uns als primäres Einstiegssignal.",
+                    "Um Fehlsignale herauszufiltern, integrieren wir ein zweites Bestätigungstool: den Stochastic Oscillator. Während der RSI die Geschwindigkeit der Preisänderung verfolgt, hilft uns der Stochastic, das Momentum im Verhältnis zur High-Low-Range zu identifizieren. Wir nutzen für diesen Oszillator die Level 80 und 20. Wenn sowohl der RSI als auch der Stochastic in diesen Extremzonen übereinstimmen, steigt die Wahrscheinlichkeit einer Umkehr exponentiell an, was uns ein Setup mit hoher Konfidenz bietet.",
+                    "Lassen Sie uns die Psychologie hinter dem 'Call'- oder Kauf-Setup besprechen. Wie Sie im bullischen Szenario auf der Infografik sehen können, warten wir geduldig darauf, dass der Markt abtaucht. Wir suchen den Moment, in dem die RSI-Linie das 30er Level erreicht oder unterschreitet. In diesem präzisen Moment ist der Vermögenswert mathematisch überverkauft. Der Verkaufsdruck ist kurzfristig unhaltbar, und der Markt muss 'atmen'. Dies ist unser Auslöser, um einen Call-Trade für eine Minute einzugehen, in Erwartung dieser sofortigen Aufwärtskorrektur.",
+                    "Umgekehrt suchen wir beim 'Put'- oder Verkaufs-Setup nach irrationalem Überschwang im Preis. Wenn die Kerzen nach oben schießen und die RSI-Linie das 70er Level erreicht oder durchbricht, wissen wir, dass der Vermögenswert überkauft ist. Das 'Gummiband' ist bis an seine Grenze gedehnt. An diesem Höhepunkt sind die Käufer erschöpft und ein Rückgang steht unmittelbar bevor. Wir warten nicht auf eine langfristige Trendwende; wir schlagen sofort mit einem Put-Trade für eine Minute zu, um den ersten Rückgang zu nutzen.",
+                    "Es ist wichtig zu verstehen, dass diese Strategie rein reaktiv und nicht prädiktiv ist. Wir raten nicht, wohin der Preis gehen wird; wir reagieren darauf, wo der Preis ist. Die Schönheit dieses Ansatzes liegt in seiner Disziplin. Wenn der RSI die 30er oder 70er Linien nicht berührt, handeln wir nicht. Wir bleiben an der Seitenlinie wie ein Scharfschütze, der auf die perfekte Ausrichtung wartet. Diese Geduld unterscheidet profitable Trader von Glücksspielern.",
+                    "Darüber hinaus ist das Risikomanagement in dieser Strategie in die Zeitsteuerung integriert. Durch die Verwendung einer festen einminütigen Ablaufzeit bei 30-Sekunden-Kerzen vermeiden wir die Falle, Positionen während langfristiger Konsolidierungen zu halten. Wir steigen bei hoher Volatilität ein, nutzen die Reaktion und steigen aus. Dieser schnelle Umschlag ermöglicht mehrere Gelegenheiten innerhalb einer einzigen Handelssitzung und summiert kleine Gewinne zu signifikanten täglichen Zielen auf.",
+                    "Zusammenfassend lässt sich sagen, dass die Effizienz dieser Strategie für 2026 und darüber hinaus in ihrer Einfachheit und dem Vertrauen auf unveränderliche Marktmechaniken liegt. Märkte werden immer überreagiert auf Nachrichten und Volumenspitzen reagieren und sie werden korrigieren. Indem Sie die RSI 70/30- und Stochastic 80/20-Level auf einem 30-Sekunden-Zeitrahmen meistern, verschaffen Sie sich einen mathematischen Vorteil gegenüber dem Markt.",
+                    "Um diese Strategie effektiv umzusetzen, benötigen Sie einen Broker, der eine präzise Ausführung und die von uns besprochenen spezifischen Indikatoren bietet. Für diejenigen, die bereit sind, diese Methode anzuwenden, können Sie über den hier angezeigten offiziellen Link ein zuverlässiges Handelskonto registrieren."
                 ]
             },
             tr: {
-                dir: "ltr",
+                lang: "tr-TR",
                 title: "Pocket Option Stratejisi",
                 promo: "Bu strateji ile 10 dolarınızı üç saatten kısa sürede 500 dolara dönüştürün",
                 reg_now: "Şimdi Kaydolun: Bugün İşlem Yapmaya Başlayın",
+                mid_cta: "Bu mantığı anında ticaret hesabınıza uygulayın",
+                open_acc: "Hesabınızı Açın",
                 paragraphs: [
-                    "Bugün analiz ettiğimiz şey, ikili opsiyonlar için özel olarak tasarlanmış yüksek hassasiyetli bir ortalamaya dönüş stratejisidir. Bu yaklaşım piyasa esnekliği ilkesine dayanır.",
-                    "Teknik mimariyle başlayalım. Grafiğimizi 30 saniyelik mum çubuklarına ayarlıyoruz. İşlem bitiş süremiz kesinlikle bir dakikadır.",
-                    "Temel gösterge RSI'dır. RSI'yı 70 ve 30 seviyeleriyle yapılandırdık. 70 seviyesi 'Aşırı Alım' bölgesini, 30 seviyesi ise 'Aşırı Satım' tabanını temsil eder.",
-                    "Yalan سیگنالları filtrelemek için Stokastik Osilatör kullanıyoruz. 80 ve 20 seviyelerini tercih ediyoruz.",
-                    "Alış kurulumu için RSI'nın 30 seviyesinin altına düşmesini bekliyoruz. Bu, bir dakikalık yukarı yönlü işlem için tetikleyicimizdir.",
-                    "Satış kurulumu için RSI'nın 70 seviyesine ulaşmasını bekliyoruz. Bu zirvede alıcılar tükenmiştir ve düşüş yakındır.",
-                    "Bu strateji tahmin edici değil, tepki odaklıdır. Sabır, karlı tüccarları kumarbazlardan ayırır.",
-                    "Risk yönetimi süre dolumuna entegre edilmiştir. 30 saniyelik mumlarda bir dakikalık vade kullanarak riskimizi minimize ederiz.",
-                    "Özetle, bu stratejinin gücü basitliğinde yatar. RSI 70/30 ve Stokastik 80/20 seviyelerinde ustalaşın.",
-                    "Bunu uygulamak için hızlı emir iletimi sunan bir aracı kuruma ihtiyacınız var. Buradaki resmi bağlantıyı kullanarak kaydolun."
+                    "Bugün analiz ettiğimiz şey, ikili opsiyonlar için özel olarak tasarlanmış yüksek hassasiyetli bir ortalamaya dönüş stratejisidir. En iyi yatırımcılar tarafından sıklıkla kullanılan bu yaklaşım, piyasa esnekliğinin temel ekonomik ilkesine dayanır. Buradaki ana kavram, fiyat hareketinin bir lastik bant gibi davranmasıdır; kısa sürede çok fazla gerildiğinde, kaçınılmaz olarak geri döner. Önümüzdeki bir saatlik trendi tahmin etmeye çalışmıyoruz; fiyat tükenmişliğine verilen anlık ve kaçınılmaz tepkiden yararlanmaya çalışıyoruz.",
+                    "İlk görselde gösterildiği gibi grafiğimizin teknik mimarisiyle başlayalım. Bu stratejiyi etkili bir şekilde yürütmek için yüksek frekanslı bir ortamda çalışmalıyız. Grafik zaman dilimimizi 30 saniyelik mum çubuklarına ayarlıyoruz. Bu özel zaman dilimi çok önemlidir çünkü daha uzun zaman dilimlerinin gizlediği mikro oynaklığı görmemizi sağlar. Bununla birleşen işlem bitiş süremiz kesinlikle bir dakikadır. Vade ve mum süresi arasındaki bu 2:1 oranı, piyasaya hedeflediğimiz 'geri çekilme' tepkisini vermesi için tam olarak yeterli zamanı tanır.",
+                    "Şimdi göstergelerimize bakarsak, gürültüyü bir kenara bırakıp momentum osilatörlerine odaklanıyoruz. Bu stratejinin ana itici gücü Göreceli Güç Endeksi veya RSI'dır. RSI'yı 70 ve 30 temel seviyeleriyle yapılandırdık. 70 seviyesi tavanı, yani alıcı tükenmişliğinin yaşandığı 'Aşırı Alım' bölgesini temsil eder. Buna karşılık, 30 seviyesi tabanı, yani satıcıların momentum kaybettiği 'Aşırı Satım' bölgesini temsil eder. Bu gösterge bizim birincil giriş sinyalimizdir.",
+                    "Yalan sinyalleri filtrelemek için ikincil bir onay aracı ekliyoruz: Stokastik Osilatör. RSI fiyat değişim hızını takip ederken, Stokastik yüksek-düşük aralığına göre momentumu belirlememize yardımcı olur. Bu osilatör için 80 ve 20 seviyelerini kullanıyoruz. Hem RSI hem de Stokastik bu uç bölgelerde aynı hizaya geldiğinde, geri dönüş olasılığı katlanarak artar ve bize yüksek güvenli bir kurulum sağlar.",
+                    "Gelin 'Call' (Alış) kurulumunun arkasındaki psikolojiyi tartışalım. İnfografikteki boğa senaryosunda görebileceğiniz gibi, piyasanın dalış yapmasını sabırla bekliyoruz. RSI çizgisinin 30 seviyesine ulaştığı veya altına düştüğü anı arıyoruz. Bu kesin anda, varlık matematiksel olarak aşırı satılmıştır. Satış baskısı kısa vadede sürdürülemez ve piyasa nefes almalıdır. Bu, anlık yukarı yönlü düzeltmeyi bekleyerek bir dakikalık Call işlemine girmemiz için tetikleyicimizdir.",
+                    "Tersine, 'Put' (Satış) kurulumu için fiyatta rasyonel olmayan bir coşku arıyoruz. Mumlar yukarı fırladığında ve RSI çizgisi 70 seviyesine ulaştığında veya bu seviyeyi deldiğinde, varlığın aşırı alındığını biliriz. 'Lastik bant' sınırına kadar gerilmiştir. Bu zirvede alıcılar tükenmiştir ve bir düşüş yakındır. Uzun bir trend dönüşü beklemeyiz; ilk düşüşü yakalamak için hemen bir dakikalık Put işlemiyle saldırırız.",
+                    "Bu stratejinin tahmin edici değil, tamamen tepki odaklı olduğunu anlamak önemlidir. Fiyatın nereye gideceğini tahmin etmiyoruz; fiyatın olduğu yere tepki veriyoruz. Bu yaklaşımın güzelliği disiplininde yatar. RSI 30 veya 70 çizgilerine dokunmazsa işlem yapmayız. Mükemmel hizalamayı bekleyen bir keskin nişancı gibi kenarda kalırız. Bu sabır, karlı tüccarları kumarbazlardan ayıran en temel özelliktir.",
+                    "Dahası, bu stratejide risk yönetimi vade süresine entegre edilmiştir. 30 saniyelik mumlarda sabit bir dakikalık vade kullanarak, uzun süreli konsolidasyonlar sırasında pozisyon tutma tuzağından kaçınırız. Yüksek volatilite sırasında girer, tepkiyi yakalar ve çıkarız. Bu hızlı devir hızı, tek bir işlem seansında birden fazla fırsata izin vererek küçük kazançları önemli günlük hedeflere dönüştürür.",
+                    "Özetle, bu stratejinin 2026 ve sonrası için verimliliği, basitliğinde ve değişmez piyasa mekaniklerine dayanmasında yatar. Piyasalar haberlere ve hacim artışlarına her zaman aşırı tepki verecek ve her zaman ortalamaya geri dönecektir. 30 saniyelik bir zaman diliminde RSI 70/30 ve Stokastik 80/20 seviyelerinde ustalaşarak, kendinizi piyasaya karşı matematiksel bir avantajla donatıyorsunuz.",
+                    "Bu stratejiyi etkili bir şekilde uygulamak için hassas emir iletimi ve tartıştığımız özel göstergeleri sunan bir aracı kuruma ihtiyacınız var. Bu yöntemi uygulamaya başlamaya hazır olanlar, burada gösterilen resmi bağlantıyı kullanarak güvenilir bir ticaret hesabı için kaydolabilirler."
                 ]
             },
-            de: { dir: "ltr", title: "Pocket Option Strategie", paragraphs: ["Heute analysieren wir eine hochpräzise Mean-Reversion-Strategie...", "Wir nutzen 30-Sekunden-Candlesticks...", "Der Hauptindikator ist der RSI (70/30)...", "Zur Filterung nutzen wir den Stochastic Oscillator (80/20)...", "Für 'Call'-Setups warten wir auf RSI unter 30...", "Für 'Put'-Setups warten wir auf RSI über 70...", "Diese Strategie ist reaktiv, nicht prädiktiv...", "Risikomanagement durch feste Verfallszeiten...", "Einfachheit ist der Schlüssel zum Erfolg...", "Registrieren Sie sich über den offiziellen Link..."] },
-            es: { dir: "ltr", title: "Estrategia Pocket Option", paragraphs: ["Analizamos una estrategia de reversión a la media...", "Usamos velas de 30 segundos y expiración de 1 minuto...", "El motor es el RSI en niveles 70 y 30...", "Filtramos con el Oscilador Estocástico 80/20...", "Para 'Call', esperamos a que el RSI rompa el nivel 30...", "Para 'Put', esperamos al nivel 70 de sobrecompra...", "La paciencia separa a los traders de los apostadores...", "Gestión de riesgo integrada en el tiempo...", "Domina el RSI y Estocástico para ganar...", "Regístrate usando el link oficial..."] },
-            ar: { dir: "rtl", title: "استراتيجية بوكيت أوبشن", paragraphs: ["ما نحلله اليوم هو استراتيجية العودة إلى المتوسط...", "نبدأ بالهيكل الفني والشموع اليابانية لمدة 30 ثانية...", "المحرك الأساسي هو مؤشر القوة النسبية (RSI)...", "لتصفية الإشارات الخاطئة نستخدم Stochastic...", "لصفقات الشراء ننتظر وصول RSI إلى مستوى 30...", "لصفقات البيع ننتظر وصول RSI إلى مستوى 70...", "هذه الاستراتيجية تفاعلية وليست تنبؤية...", "إدارة المخاطر مدمجة في وقت الانتهاء...", "البساطة هي سر النجاح في عام 2026...", "سجل الآن عبر الرابط الرسمي الموضح هنا..."] }
-            // Note: In a real app, you would add full translations for all 20 languages here. 
-            // For brevity, others will default to English if not provided.
+            es: {
+                lang: "es-ES",
+                title: "Estrategia Pocket Option",
+                promo: "Convierta sus $10 en $500 en menos de tres horas con esta estrategia",
+                reg_now: "Regístrese ahora: Comience a operar hoy mismo",
+                mid_cta: "Aplique esta lógica a su cuenta de trading al instante",
+                open_acc: "Abra su cuenta",
+                paragraphs: [
+                    "Lo que estamos analizando hoy es una estrategia de reversión a la media de alta precisión diseñada específicamente para opciones binarias. Este enfoque, a menudo utilizado por los mejores operadores, opera sobre el principio económico fundamental de la elasticidad del mercado. El concepto central aquí es que la acción del precio se comporta como una banda elástica; cuando se estira demasiado en un período corto, inevitablemente retrocede. No buscamos predecir la tendencia para la próxima hora; buscamos capitalizar la reacción inmediata e inevitable al agotamiento de los precios.",
+                    "Comencemos con la arquitectura técnica de nuestro gráfico, como se muestra en el primer visual. Para ejecutar esta estrategia de manera efectiva, debemos operar en un entorno de alta frecuencia. Configuramos el marco de tiempo de nuestro gráfico en velas de 30 segundos. Este marco de tiempo específico es crucial porque nos permite ver la volatilidad granular que ocultan los marcos de tiempo más largos. Junto con esto, nuestro tiempo de expiración de la operación se establece estrictamente en un minuto. Esta relación 2:1 entre la expiración y el tiempo de la vela le da al mercado exactamente el tiempo suficiente para producir la reacción de 'retroceso' que buscamos.",
+                    "Ahora, mirando nuestros indicadores, eliminamos el ruido y nos enfocamos en los osciladores de impulso. El motor principal de esta estrategia es el Índice de Fuerza Relativa, o RSI. Hemos configurado el RSI con niveles clave en 70 y 30. El nivel 70 representa el techo: la zona de condiciones de 'Sobrecompra' donde ocurre el agotamiento del comprador. Por el contrario, el nivel 30 representa el suelo: la zona de 'Sobreventa' donde los vendedores están perdiendo impulso. Este indicador sirve como nuestra señal principal de entrada.",
+                    "Para filtrar señales falsas, incorporamos una herramienta de confirmación secundaria: el Oscilador Estocástico. Mientras que el RSI rastrea la velocidad del cambio de precio, el Estocástico nos ayuda a identificar el impulso en relación con el rango máximo-mínimo. Utilizamos los niveles de 80 y 20 para este oscilador. Cuando tanto el RSI como el Estocástico se alinean en estas zonas extremas, la probabilidad de una reversión aumenta exponencialmente, proporcionándonos una configuración de alta confianza.",
+                    "Analicemos la psicología detrás de la configuración 'Call' o de compra. Como puede ver en el escenario alcista de la infografía, esperamos pacientemente a que el mercado caiga. Buscamos el momento en que la línea del RSI toca o rompe por debajo del nivel 30. En este preciso momento, el activo está matemáticamente sobrevendido. La presión de venta es insostenible a corto plazo y el mercado debe respirar. Este es nuestro disparador para entrar en una operación Call por un minuto, anticipando esa corrección inmediata al alza.",
+                    "Por el contrario, para la configuración 'Put' o de venta, buscamos una exuberancia irracional en el precio. Cuando las velas suben y la línea del RSI toca o atraviesa el nivel 70, sabemos que el activo está sobrecomprado. La 'banda elástica' se estira hasta su límite. En este pico, los compradores están agotados y una caída es inminente. No esperamos a que se produzca una inversión de tendencia prolongada; atacamos inmediatamente con una operación Put durante un minuto para capturar la caída inicial.",
+                    "Es importante entender que esta estrategia es puramente reactiva, no predictiva. No estamos adivinando hacia dónde irá el precio; estamos reaccionando a dónde está el precio. La belleza de este enfoque radica en su disciplina. Si el RSI no toca las líneas 30 o 70, no operamos. Nos quedamos al margen como un francotirador esperando la alineación perfecta. Esta paciencia es lo que separa a los operadores rentables de los apostadores.",
+                    "Además, la gestión de riesgos en esta estrategia se basa en el vencimiento del tiempo. Al utilizar un vencimiento fijo de un minuto en velas de 30 segundos, evitamos la trampa de mantener posiciones durante consolidaciones a largo plazo. Entramos durante la alta volatilidad, capturamos la reacción y salimos. Esta rotación rápida permite múltiples oportunidades dentro de una sola sesión de negociación, convirtiendo pequeñas ganancias en objetivos diarios significativos.",
+                    "En resumen, la eficiencia de esta estrategia para 2026 y más allá radica en su simplicidad y en su dependencia de la mecánica inmutable del mercado. Los mercados siempre reaccionarán de forma exagerada a las noticias y a los picos de volumen, y siempre corregirán volviendo a la media. Al dominar los niveles RSI 70/30 y Estocástico 80/20 en un marco de tiempo de 30 segundos, se está dotando de una ventaja matemática sobre el mercado.",
+                    "Para implementar esta estrategia de manera efectiva, necesita un bróker que ofrezca una ejecución precisa y los indicadores específicos que discutimos. Para aquellos listos para comenzar a aplicar este método, pueden registrarse para obtener una cuenta de trading confiable utilizando el enlace oficial que se muestra aquí."
+                ]
+            }
         };
 
         let currentLang = 'en';
@@ -317,21 +415,21 @@
 
         function changeLanguage() {
             currentLang = document.getElementById('lang-select').value;
-            const data = dictionary[currentLang] || dictionary['en'];
+            const data = dictionary[currentLang];
             
-            document.body.dir = data.dir || "ltr";
-            document.getElementById('main-title').innerText = data.title || dictionary['en'].title;
-            document.getElementById('promo-text').innerText = data.promo || dictionary['en'].promo;
-            document.getElementById('reg-btn-1').querySelector('span').innerText = data.reg_now || dictionary['en'].reg_now;
-            document.getElementById('mid-cta-text').innerText = data.mid_cta || dictionary['en'].mid_cta;
-            document.getElementById('reg-btn-2').innerText = data.open_acc || dictionary['en'].open_acc;
+            document.body.dir = "ltr"; 
+            document.getElementById('main-title').innerText = data.title;
+            document.getElementById('promo-text').innerText = data.promo;
+            document.getElementById('reg-btn-1').querySelector('span').innerText = data.reg_now;
+            document.getElementById('mid-cta-text').innerText = data.mid_cta;
+            document.getElementById('reg-btn-2').innerText = data.open_acc;
             document.getElementById('video-title').innerText = data.video_t || dictionary['en'].video_t;
             document.getElementById('final-title').innerText = data.final_t || dictionary['en'].final_t;
-            document.getElementById('reg-btn-3').innerText = data.open_acc || dictionary['en'].open_acc;
-            document.getElementById('label-speed').innerText = data.speed || dictionary['en'].speed;
-            document.getElementById('para-indicator').innerText = data.indicator || dictionary['en'].indicator;
+            document.getElementById('reg-btn-3').innerText = data.open_acc;
+            document.getElementById('label-speed').innerText = data.speed;
+            document.getElementById('para-indicator').innerText = data.indicator;
 
-            renderParagraphs(data.paragraphs || dictionary['en'].paragraphs);
+            renderParagraphs(data.paragraphs);
             synth.cancel();
             updatePlayIcon(false);
         }
@@ -350,7 +448,16 @@
                     const card = document.createElement('div');
                     card.className = 'paragraph-card p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg';
                     card.id = `para-${i}`;
-                    card.innerHTML = `<p class="leading-relaxed text-slate-200 text-lg">${textList[i]}</p>`;
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start gap-4">
+                            <p class="leading-relaxed text-slate-200 text-lg">${textList[i]}</p>
+                            <div class="playing-waves">
+                                <div class="wave-bar" style="animation-delay: 0.1s"></div>
+                                <div class="wave-bar" style="animation-delay: 0.3s"></div>
+                                <div class="wave-bar" style="animation-delay: 0.2s"></div>
+                            </div>
+                        </div>
+                    `;
                     card.onclick = () => playParagraph(i);
                     el.appendChild(card);
                 }
@@ -367,20 +474,20 @@
 
             synth.cancel();
             currentIndex = index;
-            const data = dictionary[currentLang] || dictionary['en'];
+            const data = dictionary[currentLang];
             const text = data.paragraphs[index];
 
             document.querySelectorAll('.paragraph-card').forEach(c => c.classList.remove('active'));
             document.getElementById(`para-${index}`).classList.add('active');
 
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = currentLang === 'fa' ? 'fa-IR' : (currentLang === 'ar' ? 'ar-SA' : currentLang);
+            utterance.lang = data.lang;
             utterance.rate = speechRate;
 
             utterance.onstart = () => updatePlayIcon(true);
             utterance.onend = () => {
                 updatePlayIcon(false);
-                if (currentIndex < 9) setTimeout(() => playParagraph(currentIndex + 1), 1000);
+                if (currentIndex < 9) setTimeout(() => playParagraph(currentIndex + 1), 1200);
             };
 
             synth.speak(utterance);
