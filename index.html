@@ -136,7 +136,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.2);
             z-index: 10;
             cursor: pointer;
             display: flex;
@@ -145,22 +145,24 @@
             transition: background 0.3s;
         }
         .video-overlay-link:hover {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
         }
         .play-overlay-btn {
-            background: rgba(59, 130, 246, 0.9);
+            background: rgba(59, 130, 246, 0.95);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border-radius: 9999px;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             transform: scale(1);
-            transition: transform 0.2s;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
         }
         .video-overlay-link:hover .play-overlay-btn {
-            transform: scale(1.1);
+            transform: scale(1.05);
+            background: #2563eb;
         }
     </style>
 </head>
@@ -182,7 +184,7 @@
     <main class="max-w-4xl mx-auto px-6 py-10">
         
         <!-- FIRST REGISTRATION LINK -->
-        <a href="https://bit.ly/poregister" target="_blank" class="reg-banner group">
+        <a href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" class="reg-banner group">
             <div class="flex items-center gap-4 justify-center">
                 <i class="fas fa-rocket text-yellow-400 text-2xl group-hover:animate-bounce"></i>
                 <span class="font-bold text-white text-xl">Register Now: Start Trading Today</span>
@@ -191,69 +193,71 @@
 
         <!-- PART 1: OVERVIEW & IMAGE 01 -->
         <section class="image-container">
-            <a href="https://bit.ly/poregister" target="_blank" title="Click to Register and Start">
+            <a href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" title="Click to Register and Start">
                 <img src="image01.jpg" alt="Strategy Overview" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+01+-+Indicators+Setup'">
             </a>
         </section>
 
         <div id="section-1" class="text-left">
-            <!-- Paras 0, 1, 2 injected by JS -->
+            <!-- Paragraphs will be injected here -->
         </div>
 
         <!-- MIDDLE REGISTRATION LINK -->
         <div class="bg-slate-800/80 p-8 rounded-3xl border border-blue-500/20 text-center my-14 shadow-2xl">
             <h3 class="text-xl font-bold text-blue-300 mb-6 text-center">Apply this logic to your trading account instantly</h3>
-            <a href="https://bit.ly/poregister" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105">
+            <a href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105">
                 Open Your Account <i class="fas fa-external-link-alt ml-2"></i>
             </a>
         </div>
 
         <!-- PART 2: EXECUTION & IMAGE 03 -->
         <section class="image-container">
-            <a href="https://bit.ly/poregister" target="_blank" title="Click to Register and Start">
+            <a href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" title="Click to Register and Start">
                 <img src="image03.jpg" alt="Execution Rules" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+03+-+Entry+Logic'">
             </a>
         </section>
 
         <div id="section-2" class="text-left">
-            <!-- Paras 3, 4, 5 injected by JS -->
+            <!-- Paragraphs will be injected here -->
         </div>
 
         <!-- PART 3: TECHNICALS & IMAGE 02 -->
         <section class="image-container mt-14">
-            <a href="https://bit.ly/poregister" target="_blank" title="Click to Register and Start">
+            <a href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" title="Click to Register and Start">
                 <img src="image02.jpg" alt="Technical Setup" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+02+-+Technical+Setup'">
             </a>
         </section>
 
         <div id="section-3" class="text-left">
-            <!-- Paras 6, 7, 8, 9 injected by JS -->
+            <!-- Paragraphs will be injected here -->
         </div>
 
         <!-- YOUTUBE VIDEO SECTION AT THE END -->
         <section class="my-14">
             <h2 class="text-xl font-bold text-blue-400 mb-6 uppercase tracking-wider text-center">Strategy Tutorial Video</h2>
             <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/uHBGVVJb34Y?autoplay=0&mute=1&controls=0&loop=1&playlist=uHBGVVJb34Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <!-- Video ID uHBGVVJb34Y -->
+                <iframe id="strategy-video" src="https://www.youtube.com/embed/uHBGVVJb34Y?enablejsapi=1&mute=0&controls=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 
-                <!-- Referral Link Overlay -->
-                <a href="https://bit.ly/poregister" target="_blank" class="video-overlay-link">
+                <!-- Smart Click Overlay -->
+                <div class="video-overlay-link" onclick="handleVideoPlay(event)">
                     <div class="play-overlay-btn">
-                        <i class="fas fa-play"></i>
-                        WATCH FULL TUTORIAL & REGISTER
+                        <i class="fas fa-play text-2xl"></i>
+                        WATCH FULL TUTORIAL & GET BONUS
                     </div>
-                </a>
+                </div>
             </div>
-            <p class="text-slate-500 text-sm mt-4 italic text-center">Click the video player to watch and sign up with our referral link.</p>
+            <p class="text-slate-500 text-sm mt-4 italic text-center">Click to watch the video and open the registration page in a new tab.</p>
         </section>
 
         <!-- FINAL REGISTRATION LINK -->
         <div class="mt-20 text-center p-12 bg-gradient-to-br from-blue-900/60 to-slate-900 border border-blue-500/40 rounded-3xl shadow-2xl">
             <h2 class="text-3xl font-bold mb-6 text-center">Join the Elite 5%</h2>
             <p class="text-slate-300 mb-10 text-lg text-center">Mastering this strategy is your first step toward financial freedom.</p>
-            <a href="https://bit.ly/poregister" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-black py-5 px-16 rounded-full transition-all transform hover:scale-110 shadow-2xl shadow-blue-500/40 uppercase tracking-widest">
-                Register & Trade: https://bit.ly/poregister
+            <a href="https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-black py-5 px-16 rounded-full transition-all transform hover:scale-110 shadow-2xl shadow-blue-500/40 uppercase tracking-widest">
+                Register & Trade Now
             </a>
+            <p class="mt-4 text-xs text-slate-500 break-all">https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email</p>
         </div>
     </main>
 
@@ -265,7 +269,7 @@
                 <button id="btn-play-pause" class="w-16 h-16 rounded-full bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-white shadow-2xl transition-all active:scale-90">
                     <i id="play-icon" class="fas fa-play text-2xl"></i>
                 </button>
-                <div class="flex flex-col items-start">
+                <div class="flex flex-col items-start text-left">
                     <span class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Narration Speed</span>
                     <div class="flex items-center gap-2">
                         <button id="spd-1" class="speed-btn px-3 py-1 rounded bg-blue-900/50 text-blue-400 font-bold text-xs border border-blue-500/30">1x</button>
@@ -288,6 +292,8 @@
     </footer>
 
     <script>
+        const REG_LINK = "https://p.finance/en/register/?utm_source=google,+instagram,+telegram&a=acRvUGUgdpQoMh&ac=multilanguage&code=50START&utm_medium=email";
+
         const paragraphs = [
             "what we are analyzing today is a high-precision mean reversion strategy designed specifically for binary options. This approach, often utilized by top traders, operates on the fundamental economic principle of market elasticity. The core concept here is that price action behaves like a rubber band; when it is stretched too far in a short period, it inevitably snaps back. We are not looking to predict the trend for the next hour; we are looking to capitalize on the immediate, inevitable reaction to price exhaustion.",
             "Let’s begin with the technical architecture of our chart, as displayed in the first visual. To execute this strategy effectively, we must operate in a high-frequency environment. We set our chart timeframe to 30-second candlesticks. This specific timeframe is crucial because it allows us to see the granular volatility that longer timeframes hide. Paired with this, our trade expiration time is set strictly to one minute. This 2:1 ratio between expiration and candle time gives the market exactly enough time to produce the 'pullback' reaction we are targeting.",
@@ -298,7 +304,7 @@
             "It is important to understand that this strategy is purely reactive, not predictive. We are not guessing where the price will go; we are reacting to where the price is. The beauty of this approach lies in its discipline. If the RSI does not touch the 30 or 70 lines, we do not trade. We remain on the sidelines like a sniper waiting for the perfect alignment. This patience is what separates profitable traders from gamblers.",
             "Furthermore, risk management in this strategy is built into the time expiration. By using a fixed one-minute expiration on 30-second candles, we avoid the trap of holding positions during long-term consolidations. We enter during high volatility, capture the reaction, and exit. This rapid turnover allows for multiple opportunities within a single trading session, compounding small wins into significant daily targets.",
             "In summary, the efficiency of this strategy for 2026 and beyond lies in its simplicity and reliance on unchangeable market mechanics. Markets will always overreact to news and volume spikes, and they will always correct back to the mean. By mastering the RSI 70/30 and Stochastic 80/20 levels on a 30-second timeframe, you are equipping yourself with a mathematical edge over the house.",
-            "To implement this strategy effectively, you need a broker that offers precise execution and the specific indicators we discussed. For those ready to start applying this method, you can register for a reliable trading account using the official link displayed here: https://bit.ly/poregister"
+            "To implement this strategy effectively, you need a broker that offers precise execution and the specific indicators we discussed. For those ready to start applying this method, you can register for a reliable trading account using the official link displayed here."
         ];
 
         let currentIndex = -1;
@@ -339,6 +345,23 @@
                     el.appendChild(card);
                 }
             });
+        }
+
+        // Smart Video Handler
+        function handleVideoPlay(event) {
+            // Open registration link in new tab
+            window.open(REG_LINK, '_blank');
+            
+            // Hide the overlay to reveal the video
+            const overlay = event.currentTarget;
+            overlay.style.display = 'none';
+            
+            // Auto-play the video by updating src
+            const iframe = document.getElementById('strategy-video');
+            let currentSrc = iframe.src;
+            if (currentSrc.indexOf('autoplay=1') === -1) {
+                iframe.src += (currentSrc.indexOf('?') === -1 ? '?' : '&') + 'autoplay=1';
+            }
         }
 
         function getBestVoice() {
