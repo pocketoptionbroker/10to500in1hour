@@ -47,6 +47,13 @@
             height: auto;
             margin-bottom: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-container a:hover img {
+            transform: scale(1.01);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
         }
 
         input[type=range] {
@@ -105,6 +112,56 @@
             0%, 100% { height: 5px; }
             50% { height: 20px; }
         }
+
+        /* Video Overlay Styling */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .video-overlay-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .video-overlay-link:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .play-overlay-btn {
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: scale(1);
+            transition: transform 0.2s;
+        }
+        .video-overlay-link:hover .play-overlay-btn {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="pb-40 text-center">
@@ -114,9 +171,9 @@
         <h1 class="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 mb-2">
             Pocket Option High-Frequency Strategy
         </h1>
-        <p class="text-slate-400 text-lg mb-6">Optimized for 2026 Trading Environments</p>
+        <p class="text-slate-400 text-lg mb-6 text-center">Optimized for 2026 Trading Environments</p>
         <div class="inline-block px-6 py-3 bg-slate-800 rounded-full border border-slate-700 shadow-2xl">
-            <span class="highlight-cta text-xl md:text-2xl block italic">
+            <span class="highlight-cta text-xl md:text-2xl block italic text-center">
                 Turn your $10 into $500 in less than three hours with this strategy
             </span>
         </div>
@@ -134,16 +191,18 @@
 
         <!-- PART 1: OVERVIEW & IMAGE 01 -->
         <section class="image-container">
-            <img src="image01.jpg" alt="Strategy Overview" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+01+-+Indicators+Setup'">
+            <a href="https://bit.ly/poregister" target="_blank" title="Click to Register and Start">
+                <img src="image01.jpg" alt="Strategy Overview" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+01+-+Indicators+Setup'">
+            </a>
         </section>
 
         <div id="section-1" class="text-left">
-            <!-- Paras 0, 1, 2 -->
+            <!-- Paras 0, 1, 2 injected by JS -->
         </div>
 
         <!-- MIDDLE REGISTRATION LINK -->
         <div class="bg-slate-800/80 p-8 rounded-3xl border border-blue-500/20 text-center my-14 shadow-2xl">
-            <h3 class="text-xl font-bold text-blue-300 mb-6">Apply this logic to your trading account instantly</h3>
+            <h3 class="text-xl font-bold text-blue-300 mb-6 text-center">Apply this logic to your trading account instantly</h3>
             <a href="https://bit.ly/poregister" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105">
                 Open Your Account <i class="fas fa-external-link-alt ml-2"></i>
             </a>
@@ -151,26 +210,47 @@
 
         <!-- PART 2: EXECUTION & IMAGE 03 -->
         <section class="image-container">
-            <img src="image03.jpg" alt="Execution Rules" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+03+-+Entry+Logic'">
+            <a href="https://bit.ly/poregister" target="_blank" title="Click to Register and Start">
+                <img src="image03.jpg" alt="Execution Rules" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+03+-+Entry+Logic'">
+            </a>
         </section>
 
         <div id="section-2" class="text-left">
-            <!-- Paras 3, 4, 5 -->
+            <!-- Paras 3, 4, 5 injected by JS -->
         </div>
 
         <!-- PART 3: TECHNICALS & IMAGE 02 -->
         <section class="image-container mt-14">
-            <img src="image02.jpg" alt="Technical Setup" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+02+-+Technical+Setup'">
+            <a href="https://bit.ly/poregister" target="_blank" title="Click to Register and Start">
+                <img src="image02.jpg" alt="Technical Setup" onerror="this.src='https://via.placeholder.com/800x450/1e293b/ffffff?text=Image+02+-+Technical+Setup'">
+            </a>
         </section>
 
         <div id="section-3" class="text-left">
-            <!-- Paras 6, 7, 8, 9 -->
+            <!-- Paras 6, 7, 8, 9 injected by JS -->
         </div>
+
+        <!-- YOUTUBE VIDEO SECTION AT THE END -->
+        <section class="my-14">
+            <h2 class="text-xl font-bold text-blue-400 mb-6 uppercase tracking-wider text-center">Strategy Tutorial Video</h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/uHBGVVJb34Y?autoplay=0&mute=1&controls=0&loop=1&playlist=uHBGVVJb34Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                
+                <!-- Referral Link Overlay -->
+                <a href="https://bit.ly/poregister" target="_blank" class="video-overlay-link">
+                    <div class="play-overlay-btn">
+                        <i class="fas fa-play"></i>
+                        WATCH FULL TUTORIAL & REGISTER
+                    </div>
+                </a>
+            </div>
+            <p class="text-slate-500 text-sm mt-4 italic text-center">Click the video player to watch and sign up with our referral link.</p>
+        </section>
 
         <!-- FINAL REGISTRATION LINK -->
         <div class="mt-20 text-center p-12 bg-gradient-to-br from-blue-900/60 to-slate-900 border border-blue-500/40 rounded-3xl shadow-2xl">
-            <h2 class="text-3xl font-bold mb-6">Join the Elite 5%</h2>
-            <p class="text-slate-300 mb-10 text-lg">Mastering this strategy is your first step toward financial freedom.</p>
+            <h2 class="text-3xl font-bold mb-6 text-center">Join the Elite 5%</h2>
+            <p class="text-slate-300 mb-10 text-lg text-center">Mastering this strategy is your first step toward financial freedom.</p>
             <a href="https://bit.ly/poregister" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-black py-5 px-16 rounded-full transition-all transform hover:scale-110 shadow-2xl shadow-blue-500/40 uppercase tracking-widest">
                 Register & Trade: https://bit.ly/poregister
             </a>
@@ -195,7 +275,7 @@
                 </div>
             </div>
 
-            <div class="flex-1 w-full">
+            <div class="flex-1 w-full text-left">
                 <div class="flex justify-between text-[10px] text-slate-500 font-bold mb-2 uppercase tracking-tighter">
                     <span id="para-indicator">Select a paragraph to play</span>
                     <span id="voice-name">Optimizing Voice...</span>
@@ -226,7 +306,6 @@
         const synth = window.speechSynthesis;
         let currentUtterance = null;
 
-        // UI Elements
         const playIcon = document.getElementById('play-icon');
         const progressBar = document.getElementById('progress-bar');
         const paraIndicator = document.getElementById('para-indicator');
@@ -241,6 +320,7 @@
 
             sections.forEach(sec => {
                 const el = document.getElementById(sec.id);
+                if (!el) return;
                 for (let i = sec.range[0]; i <= sec.range[1]; i++) {
                     const card = document.createElement('div');
                     card.className = 'paragraph-card p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 shadow-lg';
@@ -263,7 +343,6 @@
 
         function getBestVoice() {
             const voices = synth.getVoices();
-            // Prefer "Natural" or "Google" English voices
             const preferred = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha')));
             const fallback = voices.find(v => v.lang.startsWith('en'));
             return preferred || fallback || voices[0];
@@ -329,7 +408,6 @@
             }
         };
 
-        // Speed Controls
         function setSpeed(rate, btnId) {
             speechRate = rate;
             document.querySelectorAll('.speed-btn').forEach(btn => {
@@ -348,7 +426,6 @@
         document.getElementById('spd-15').onclick = () => setSpeed(1.4, 'spd-15');
         document.getElementById('spd-2').onclick = () => setSpeed(1.8, 'spd-2');
 
-        // Init voices
         window.speechSynthesis.onvoiceschanged = () => {
             const v = getBestVoice();
             if(v) voiceNameEl.innerText = `Voice: ${v.name}`;
